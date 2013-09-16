@@ -34,6 +34,11 @@ public class TeamsManager implements ITeamsManager {
 	}
 	
 	@Override
+	public Team getTeam(String id) {
+		return dbManager.getTeam(id);
+	}
+	
+	@Override
 	public List<Team> getAllTeams() {
 		return dbManager.getAllTeams();
 	}

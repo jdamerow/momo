@@ -16,6 +16,7 @@ import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.TimeEntry;
+import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.ITimeEntryDBManager;
 
 @Service

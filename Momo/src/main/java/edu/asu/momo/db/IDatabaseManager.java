@@ -1,4 +1,4 @@
-package edu.asu.momo.db.impl;
+package edu.asu.momo.db;
 
 import com.db4o.ObjectContainer;
 

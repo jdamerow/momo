@@ -19,6 +19,7 @@ public class TeamBackingBean {
 	private String name;
 	private String description;
 	private String id;
+	private boolean isTeamManager;
 	
 	private List<UserBackingBean> members;
 	private List<UserBackingBean> managers;
@@ -52,6 +53,12 @@ public class TeamBackingBean {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public boolean getIsTeamManager() {
+		return isTeamManager;
+	}
+	public void setIsTeamManager(boolean isTeamManager) {
+		this.isTeamManager = isTeamManager;
 	}
 	
 }

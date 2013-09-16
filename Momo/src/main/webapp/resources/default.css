@@ -23,6 +23,10 @@
 		color: #454445;
 	}
 	
+	h3 {
+		margin-top: 25px;
+	}
+	
 	p, ol, ul
 	{
 		margin-top: 0;
@@ -50,6 +54,12 @@
 	
 	a:hover
 	{
+		text-decoration: none;
+	}
+	
+	a.smallLink {
+		font-size: 11px;
+		font-weight: bold;
 		text-decoration: none;
 	}
 	

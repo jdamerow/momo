@@ -14,6 +14,7 @@ import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.Team;
+import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.ITeamDBManager;
 
 @Service
@@ -64,7 +65,7 @@ public class TeamDBManager implements ITeamDBManager {
 
 			@Override
 			public boolean match(Team arg0) {
-				if (arg0.getMembers().contains(user))
+				if (arg0.getMembers().contains(user) || arg0.getManagers().contains(user))
 					return true;
 				return false;
 			}
@@ -74,6 +75,17 @@ public class TeamDBManager implements ITeamDBManager {
 		
 		teams.addAll(results);
 		return teams;
+	}
+	
+	@Override
+	public Team getTeam(String id) {
+		Team example = new Team();
+		example.setId(id);
+		
+		ObjectSet<Team> results = database.queryByExample(example);
+		if (results.size() > 0)
+			return results.get(0);
+		return null;
 	}
 	
 	@PreDestroy

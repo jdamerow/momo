@@ -8,6 +8,7 @@ public class Project {
 	private String name;
 	private String description;
 	private List<String> members;
+	private String teamId;
 	
 	public String getId() {
 		return id;
@@ -32,6 +33,12 @@ public class Project {
 	}
 	public void setMembers(List<String> members) {
 		this.members = members;
+	}
+	public String getTeamId() {
+		return teamId;
+	}
+	public void setTeamId(String teamId) {
+		this.teamId = teamId;
 	}
 
 }
