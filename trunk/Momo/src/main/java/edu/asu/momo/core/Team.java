@@ -2,19 +2,21 @@ package edu.asu.momo.core;
 
 import java.util.List;
 
-public class Project {
+/**
+ * Teams consist of team members and managers. Managers can see the time sheets
+ * of all the team members.
+ * 
+ * @author Julia Damerow
+ *
+ */
+public class Team {
 
 	private String id;
 	private String name;
 	private String description;
 	private List<String> members;
+	private List<String> managers;
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -33,5 +35,18 @@ public class Project {
 	public void setMembers(List<String> members) {
 		this.members = members;
 	}
-
+	public List<String> getManagers() {
+		return managers;
+	}
+	public void setManagers(List<String> managers) {
+		this.managers = managers;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
 }

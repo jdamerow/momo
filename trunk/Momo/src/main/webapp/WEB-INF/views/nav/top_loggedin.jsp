@@ -8,6 +8,11 @@
 		<li
 			${currentPage == "timesheets" ? "class=\"current_page_item\"" : ""}><a
 			href="${pageContext.servletContext.contextPath}/auth/timesheets/overview" accesskey="2" title="">Timesheets</a></li>
+		<sec:authorize access="hasAnyRole('ROLE_MANAGER')">
+			<li ${currentPage == "team" ? "class=\"current_page_item\"" : ""}><a
+				href="${pageContext.servletContext.contextPath}/auth/team/manage">Teams
+					</a>
+		</sec:authorize>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN')">
 			<li ${currentPage == "user" ? "class=\"current_page_item\"" : ""}><a
 				href="${pageContext.servletContext.contextPath}/auth/user/manage">User

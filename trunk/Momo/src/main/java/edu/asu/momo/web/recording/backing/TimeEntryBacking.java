@@ -2,20 +2,20 @@ package edu.asu.momo.web.recording.backing;
 
 import java.util.Date;
 
-import edu.asu.momo.web.user.backing.UserForm;
+import edu.asu.momo.web.user.backing.UserBackingBean;
 
 public class TimeEntryBacking {
 	
-	private UserForm user;
+	private UserBackingBean user;
 	private String date;
 	private String startDate;
 	private String endDate;
 	private String time;
 	
-	public UserForm getUser() {
+	public UserBackingBean getUser() {
 		return user;
 	}
-	public void setUser(UserForm user) {
+	public void setUser(UserBackingBean user) {
 		this.user = user;
 	}
 	public String getDate() {

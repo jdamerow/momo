@@ -1,7 +1,5 @@
 package edu.asu.momo.web.user;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,7 @@ import edu.asu.momo.db.IRoleManager;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.user.IUserFactory;
 import edu.asu.momo.user.User;
-import edu.asu.momo.web.user.backing.UserForm;
+import edu.asu.momo.web.user.backing.UserBackingBean;
 
 @Controller
 public class AddUserController {
@@ -33,13 +31,13 @@ public class AddUserController {
 	@RequestMapping(value = "auth/user/showAddUser", method = RequestMethod.GET)
 	public String showAddUser(ModelMap map) {
 		map.addAttribute("availableRoles", roleManager.getRoles());
-		map.addAttribute("userForm", new UserForm());
+		map.addAttribute("userForm", new UserBackingBean());
 		
 		return "auth/user/showAddUser";
 	}
 	
 	@RequestMapping(value = "auth/user/addUser", method = RequestMethod.POST)
-	public String addNewUser(@Valid @ModelAttribute UserForm userForm, BindingResult result, ModelMap map) {
+	public String addNewUser(@Valid @ModelAttribute UserBackingBean userForm, BindingResult result, ModelMap map) {
 		if (result.hasErrors()) {
 			map.addAttribute("availableRoles", roleManager.getRoles());
 			
@@ -48,9 +46,7 @@ public class AddUserController {
 		User user = userFactory.createUser(userForm.getUsername(), userForm.getName(), userForm.getEmail(), userForm.getPassword(), userForm.getRoles());
 		userManager.saveUser(user);
 		
-		List<User> users = userManager.getAllUsers();
-		map.put("users", users);
-		return "auth/user/manage";
+		return "redirect:/auth/user/manage";
 	}
 	
 

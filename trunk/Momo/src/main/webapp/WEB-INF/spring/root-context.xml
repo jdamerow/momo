@@ -21,6 +21,8 @@
     <property name="converters">
        <list>
           <bean class="edu.asu.momo.converter.RoleStringConverter"/>
+          <bean class="edu.asu.momo.converter.UserStringConverter"/>
+          <bean class="edu.asu.momo.converter.UserBackingBeanConverter"/>
        </list>
     </property>
 </bean>
