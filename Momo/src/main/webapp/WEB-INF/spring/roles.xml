@@ -22,9 +22,9 @@
 		<property name="description" value="Momo Administrator can create new Teams." />
 	</bean>
 	
-	<bean class="edu.asu.momo.core.Role">
+	 <bean class="edu.asu.momo.core.Role">
 		<property name="id" value="ROLE_MANAGER" />
-		<property name="name" value="Momo Team Manager" />
+		<property name="name" value="Momo Manager" />
 		<property name="description" value="Momo Administrator can manage their team, get overviews of all the hours worked by their team, and approve/reject time change requests." />
 	</bean>
 	

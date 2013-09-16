@@ -67,6 +67,20 @@
 		list-style-type: none;
 	}
 	
+	table td {
+		vertical-align: top;
+	}
+	
+	ul.splitList {
+		float: left;
+		margin-right: 15px;
+	}
+	
+	table.boppelList li {
+		list-style-type: disc;
+		margin-left: 15px;
+	}
+	
 /*********************************************************************************/
 /* Image Style                                                                   */
 /*********************************************************************************/

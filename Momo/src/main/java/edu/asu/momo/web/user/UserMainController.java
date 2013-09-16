@@ -14,7 +14,7 @@ import edu.asu.momo.core.Role;
 import edu.asu.momo.db.IRoleManager;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.user.User;
-import edu.asu.momo.web.user.backing.UserForm;
+import edu.asu.momo.web.user.backing.UserBackingBean;
 
 @Controller
 public class UserMainController {
@@ -32,11 +32,11 @@ public class UserMainController {
 		return "auth/user/manage";
 	}
 	
-	protected List<UserForm> createBackingObjects(List<User> users) {
-		List<UserForm> userObjs = new ArrayList<UserForm>();
+	protected List<UserBackingBean> createBackingObjects(List<User> users) {
+		List<UserBackingBean> userObjs = new ArrayList<UserBackingBean>();
 		
 		for (User user : users) {
-			UserForm uf = new UserForm();
+			UserBackingBean uf = new UserBackingBean();
 			uf.setName(user.getName());
 			uf.setEmail(user.getEmail());
 			uf.setUsername(user.getUsername());

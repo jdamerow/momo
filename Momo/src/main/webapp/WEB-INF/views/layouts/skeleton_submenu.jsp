@@ -30,9 +30,10 @@ Released   : 20130920
 <link
 	href="${pageContext.servletContext.contextPath}/resources/js/css/jquery.dataTables.css"
 	rel="stylesheet" type="text/css" media="all" />
-	<link
+<link
 	href="${pageContext.servletContext.contextPath}/resources/js/css/jquery.dataTables_themeroller.css"
 	rel="stylesheet" type="text/css" media="all" />
+
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -41,6 +42,8 @@ Released   : 20130920
 
 <!-- <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.js"></script>-->
 <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.easyListSplitter.js"></script>
+
 <tiles:insertAttribute name="header" />
 </head>
 <body>

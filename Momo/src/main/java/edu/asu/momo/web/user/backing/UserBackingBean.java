@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import edu.asu.momo.core.Role;
 import edu.asu.momo.valid.UniqueUsername;
 
-public class UserForm {
+public class UserBackingBean {
 
 	@NotEmpty(message = "Please provide a username.")
 	@UniqueUsername

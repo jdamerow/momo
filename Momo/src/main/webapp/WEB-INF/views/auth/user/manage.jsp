@@ -13,8 +13,8 @@
 	<c:forEach items="${users}" var="user" varStatus="status">
 		<tr>
 			<td>${user.username}</td>
-			<td>${user.name }</td>
-			<td>${user.email }</td>
+			<td>${user.name}</td>
+			<td>${user.email}</td>
 			<td>
 				<c:forEach items="${user.roles}" var="role">
 				» ${role.name}

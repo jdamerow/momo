@@ -18,15 +18,16 @@ import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ServerConfiguration;
 
+import edu.asu.momo.core.Team;
 import edu.asu.momo.user.User;
 
 @Component
 @PropertySource(value = "classpath:/db4o.properties")
 public class DatabaseManager implements Serializable, IDatabaseManager {
-	
+
 	@Autowired
 	private Environment env;
-	
+
 	/**
 	 * 
 	 */
@@ -37,7 +38,8 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 	@PostConstruct
 	public void init() {
 		close();
-		ServerConfiguration configuration = Db4oClientServer.newServerConfiguration();
+		ServerConfiguration configuration = Db4oClientServer
+				.newServerConfiguration();
 		configuration.file().blockSize(80);
 		String dbfolder = env.getProperty("dbpath_folder");
 		if (!dbfolder.endsWith(File.separator))
@@ -47,12 +49,17 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 		config.common().messageLevel(1);
 		config.common().objectClass(User.class).objectField("username")
 				.indexed(true);
+		config.common().objectClass(Team.class).objectField("name")
+				.indexed(true);
+		config.common().objectClass(Team.class).objectField("id").indexed(true);
 		config.common().objectClass(User.class).cascadeOnActivate(true);
-        config.common().objectClass(User.class).cascadeOnUpdate(true);
-		server = Db4oClientServer.openServer(configuration, dbpath, 0);  
+		config.common().objectClass(User.class).cascadeOnUpdate(true);
+		server = Db4oClientServer.openServer(configuration, dbpath, 0);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.asu.momo.db.impl.IDatabaseManager#getClient()
 	 */
 	@Override
@@ -60,20 +67,22 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 		ObjectContainer container = server.openClient();
 		return container;
 	}
-	
-	private void close() {   
-		if (server != null) {   
-			server.close();   
-	    }   
-	    server = null;   
+
+	private void close() {
+		if (server != null) {
+			server.close();
+		}
+		server = null;
 	}
-	
+
 	@PreDestroy
 	public void shutdown() {
 		close();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.asu.momo.db.impl.IDatabaseManager#isEncrypt()
 	 */
 	@Override
@@ -81,7 +90,9 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 		return encrypt;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see edu.asu.momo.db.impl.IDatabaseManager#setEncrypt(boolean)
 	 */
 	@Override
@@ -89,4 +100,3 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 		this.encrypt = encrypt;
 	}
 }
-
