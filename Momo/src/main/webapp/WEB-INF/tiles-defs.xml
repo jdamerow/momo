@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+	<!-- Base definitions -->
+	<definition name="base.definition.empty" template="/WEB-INF/views/layouts/skeleton_plain.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="topmenu" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="content" value="" />
+	</definition>
+	<definition name="base.definition.submenu" template="/WEB-INF/views/layouts/skeleton_submenu.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="topmenu" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
+	</definition>
+
+
+	<!-- public pages -->
+	<definition name="login" extends="base.definition.empty">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/login.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="topmenu" value="" />
+	</definition>
+	
+	<!-- Logged in pages -->
+	<definition name="auth/welcome" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/welcome.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_welcome.jsp" />
+	</definition>
+	<definition name="auth/welcomeStop" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/welcome_stop.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_welcome.jsp" />
+	</definition>
+	<definition name="auth/welcomeStopMultiple" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/welcome_stop_multi.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_welcome.jsp" />
+	</definition>
+	
+	<definition name="forbidden" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/forbidden.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+	</definition>
+	
+	<!-- Timesheets -->
+	<definition name="auth/timesheets/overview" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Timesheets" />
+		<put-attribute name="currentPage" value="timesheets" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/timesheets/overview.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/timesheets/header_table.jsp" />
+	</definition>
+	
+	<!-- User management -->
+	<definition name="auth/user/manage" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Manage users" />
+		<put-attribute name="currentPage" value="user" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/user/manage.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_users.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/user/header_manage.jsp" />
+	</definition>
+	<definition name="auth/user/showAddUser" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Add user" />
+		<put-attribute name="currentPage" value="user" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/user/addUser.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+	</definition>
+	
+</tiles-definitions>
+
+	
