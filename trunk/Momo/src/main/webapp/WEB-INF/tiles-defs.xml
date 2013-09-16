@@ -66,6 +66,24 @@
 		<put-attribute name="header" value="/WEB-INF/views/auth/timesheets/header_table.jsp" />
 	</definition>
 	
+	<!-- Projects -->
+	<definition name="auth/projects/overview" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Projects" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/projects/overview.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
+	</definition>
+	<definition name="auth/projects/addProject" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Add project" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/projects/addProject.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
+	</definition>
+	
 	<!-- Team management -->
 	<definition name="auth/team/manage" extends="base.definition.submenu">
 		<put-attribute name="title" value="Momo - Manage teams" />

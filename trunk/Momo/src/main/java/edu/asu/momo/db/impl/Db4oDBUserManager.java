@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
+import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.user.User;
 

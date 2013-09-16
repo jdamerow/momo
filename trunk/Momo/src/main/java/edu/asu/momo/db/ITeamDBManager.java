@@ -12,4 +12,6 @@ public interface ITeamDBManager {
 
 	public abstract List<Team> getTeamsOfUser(String user);
 
+	public abstract Team getTeam(String id);
+
 }
