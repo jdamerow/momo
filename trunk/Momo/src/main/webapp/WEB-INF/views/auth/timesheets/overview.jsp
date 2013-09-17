@@ -15,7 +15,7 @@
 
 <table id="userTable">
 <thead>
-	<tr><th>Date</th><th>Signed in</th><th>Signed out</th><th>Duration</th></tr>
+	<tr><th>Date</th><th>Signed in</th><th>Signed out</th><th>Duration</th><th>Project</th></tr>
 </thead>
 <tbody>
 	<c:forEach items="${entries}" var="entry">
@@ -24,6 +24,7 @@
 			<td>${entry.startDate}</td>
 			<td>${entry.endDate}</td>
 			<td>${entry.time}</td>
+			<td>${entry.project.name}</td>
 		</tr>
 
 	</c:forEach>

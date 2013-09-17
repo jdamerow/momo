@@ -5,16 +5,32 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
+import edu.asu.momo.projects.IProjectManager;
+import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
 
 @Service
 public class TimeEntryTranslator {
+	
+	@Autowired
+	private ProjectTranslator projectTranslator;
+	
+	@Autowired
+	private IProjectManager projectManager;
 
 	public TimeEntryBacking translate(TimeEntry entry) {
 		TimeEntryBacking backingEntry = new TimeEntryBacking();
+		
+		if (entry.getProjectId() != null) {
+			Project p = projectManager.getProject(entry.getProjectId());
+			if (p != null)
+				backingEntry.setProject(projectTranslator.translate(p));
+		}
 		
 		Date startDate = entry.getStartDate();
 //		DateFormat format = DateFormat.getDateInstance();

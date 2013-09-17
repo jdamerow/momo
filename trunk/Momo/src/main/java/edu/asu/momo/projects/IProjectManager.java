@@ -12,4 +12,6 @@ public interface IProjectManager {
 
 	public abstract boolean saveProject(String name, String description, String teamId);
 
+	public abstract Project getProject(String id);
+
 }

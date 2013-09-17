@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="title">
 	<h2>Welcome to Momo!</h2>
@@ -6,5 +7,12 @@
 </div>
 
 <p>Welcome back! Start your workday by signing in!</p>
-<a href="${pageContext.servletContext.contextPath}/auth/signIn" class="button">Sign in</a>
+<form:form method="post" modelAttribute="recording" action="${pageContext.servletContext.contextPath}/auth/signIn">
+	<p>
+	<form:select path="projectId" items="${projects}"  itemValue="id" itemLabel="name" />
+	</p>
+	<p>
+	<input type="submit" name="submit" value="Sign in" class="button" />
+	</p>
+</form:form>
 
