@@ -37,10 +37,12 @@ public class ProjectTranslator {
 		bean.setName(project.getName());
 		bean.setMembers(new ArrayList<UserBackingBean>());
 		
-		for (String member : project.getMembers()) {
-			User user = userManager.getUserById(member);
-			if (user != null)
-				bean.getMembers().add(userTranslator.translateUser(user));
+		if (project.getMembers() != null) {
+			for (String member : project.getMembers()) {
+				User user = userManager.getUserById(member);
+				if (user != null)
+					bean.getMembers().add(userTranslator.translateUser(user));
+			}
 		}
 		
 		String teamId = project.getTeamId();

@@ -16,10 +16,10 @@
 <a class="smallLink" href="${pageContext.servletContext.contextPath}/auth/projects/addProject">+ Add new project</a>
 </c:if>
 
-<ul>
+<ul class="boppel">
 <c:if test="${not empty project.value}">
-	<c:forEach items="project.value" var="p">
-		<li>${p.name}</li>
+	<c:forEach items="${project.value}" var="p">
+		<li>${p.name}<br>${p.description}</li>
 	</c:forEach>
 </c:if>
 </ul>

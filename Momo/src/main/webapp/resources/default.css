@@ -81,6 +81,10 @@
 		vertical-align: top;
 	}
 	
+	table th {
+		text-align: left;
+	}
+	
 	ul.splitList {
 		float: left;
 		margin-right: 15px;
@@ -89,6 +93,12 @@
 	table.boppelList li {
 		list-style-type: disc;
 		margin-left: 15px;
+	}
+	
+	.boppel li {
+		list-style-type: disc;
+		margin-left: 20px;
+		padding: 5px;
 	}
 	
 /*********************************************************************************/

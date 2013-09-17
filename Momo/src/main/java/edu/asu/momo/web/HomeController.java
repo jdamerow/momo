@@ -2,6 +2,7 @@ package edu.asu.momo.web;
 
 import java.security.Principal;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -14,9 +15,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.db.ITimeEntryDBManager;
+import edu.asu.momo.projects.IProjectManager;
+import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.recording.ITimeEntryManager;
+import edu.asu.momo.web.projects.backing.ProjectBackingBean;
+import edu.asu.momo.web.recording.backing.RecordingBackingBean;
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +35,13 @@ public class HomeController {
 	@Autowired
 	private ITimeEntryManager timeEntryManager;
 	
+	@Autowired
+	private IProjectManager projectManager;
+	
+	@Autowired
+	private ProjectTranslator projectTranslator;
+	
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -38,6 +51,17 @@ public class HomeController {
 		List<TimeEntry> entries = timeEntryManager.getOpenTimeEntries(principle.getName());
 		
 		if (entries == null || entries.size() == 0) {
+			List<Project> projects = projectManager.getProjectsOfUser(principle.getName());
+			List<ProjectBackingBean> beans = new ArrayList<ProjectBackingBean>();
+			
+			for (Project project : projects) {
+				ProjectBackingBean bean = projectTranslator.translate(project);
+				beans.add(bean);
+			}
+			
+			model.addAttribute("projects", beans);
+			model.addAttribute("recording", new RecordingBackingBean());
+			
 			return "auth/welcome";
 		}
 		

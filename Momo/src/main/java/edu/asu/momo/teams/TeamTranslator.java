@@ -40,6 +40,7 @@ public class TeamTranslator {
 		bean.setDescription(team.getDescription());
 		bean.setManagers(new ArrayList<UserBackingBean>());
 		bean.setMembers(new ArrayList<UserBackingBean>());
+		bean.setId(team.getId());
 		
 		if (team.getManagers() != null) {
 			for (String managerId : team.getManagers()) {
