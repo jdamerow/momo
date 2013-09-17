@@ -60,6 +60,13 @@ public class Db4oDBUserManager implements IUserManager {
 		return allUsers;
 	}
 	
+	@Override
+	public boolean deleteUser(String username) {
+		User userToBeDeleted = getUserById(username);
+		database.delete(userToBeDeleted);
+		return true;
+	}
+	
 	@PreDestroy
 	public void shutdown() {
 		database.close();

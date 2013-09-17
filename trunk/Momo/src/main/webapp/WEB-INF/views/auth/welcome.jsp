@@ -6,13 +6,13 @@
 	<span class="byline">Get back your stolen time</span>
 </div>
 
-<p>Welcome back! Start your workday by signing in!</p>
+<p>Welcome back! Start your workday by clocking in!</p>
 <form:form method="post" modelAttribute="recording" action="${pageContext.servletContext.contextPath}/auth/signIn">
 	<p>
 	<form:select path="projectId" items="${projects}"  itemValue="id" itemLabel="name" />
 	</p>
 	<p>
-	<input type="submit" name="submit" value="Sign in" class="button" />
+	<input type="submit" name="submit" value="Clock in" class="button" />
 	</p>
 </form:form>
 
