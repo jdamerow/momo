@@ -31,7 +31,7 @@ public class AddUserController {
 	@RequestMapping(value = "auth/user/showAddUser", method = RequestMethod.GET)
 	public String showAddUser(ModelMap map) {
 		map.addAttribute("availableRoles", roleManager.getRoles());
-		map.addAttribute("userForm", new UserBackingBean());
+		map.addAttribute("userBackingBean", new UserBackingBean());
 		
 		return "auth/user/showAddUser";
 	}
