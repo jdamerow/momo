@@ -66,15 +66,8 @@ public class TeamTranslator {
 		return bean;
 	}
 	
-	/**
-	 * Translates a {@link TeamBackingBean} into a {@link Team} object.
-	 * @param backingBean BackingBean to translate.
-	 * @return
-	 */
-	public Team translate(TeamBackingBean backingBean) {
-		Team team = new Team();
+	protected void setValues(Team team, TeamBackingBean backingBean) {
 		team.setDescription(backingBean.getDescription());
-		team.setId(backingBean.getId());
 		team.setName(backingBean.getName());
 		
 		team.setManagers(new ArrayList<String>());
@@ -91,6 +84,21 @@ public class TeamTranslator {
 				team.getMembers().add(ub.getUsername());
 			}
 		}
+	}
+	
+	public void updateTeam(Team team, TeamBackingBean teamBackingBean) {
+		setValues(team, teamBackingBean);
+	}
+	
+	/**
+	 * Translates a {@link TeamBackingBean} into a {@link Team} object.
+	 * @param backingBean BackingBean to translate.
+	 * @return
+	 */
+	public Team translate(TeamBackingBean backingBean) {
+		Team team = new Team();
+		team.setId(backingBean.getId());
+		setValues(team, backingBean);
 		
 		return team;
 	}

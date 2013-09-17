@@ -7,11 +7,15 @@
 
 <table id="userTable" class="boppelList">
 <thead>
-	<tr><th>Team</th><th>Team managers</th><th>Team members</th></tr>
+	<tr><th></th><th>Team</th><th>Team managers</th><th>Team members</th></tr>
 </thead>
 <tbody>
 	<c:forEach items="${teams}" var="team" >
 		<tr>
+			<td width="70">
+				<a title="Edit Team" href="${pageContext.servletContext.contextPath}/auth/team/edit/${team.id}"><img alt="Edit Team" src="${pageContext.servletContext.contextPath}/resources/images/icons/edit24.png"></a>
+				<a title="Delete Team" href="${pageContext.servletContext.contextPath}/auth/team/delete/${team.id}"><img alt="Delete Team" src="${pageContext.servletContext.contextPath}/resources/images/icons/trash24.png"></a>
+			</td>
 			<td>${team.name}</td>
 			<td>
 			<ul class="splitList">

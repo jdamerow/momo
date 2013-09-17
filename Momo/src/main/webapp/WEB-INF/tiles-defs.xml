@@ -94,9 +94,25 @@
 		<put-attribute name="header" value="/WEB-INF/views/auth/team/header_manage.jsp" />
 	</definition>
 	<definition name="auth/team/showAddTeam" extends="base.definition.submenu">
-		<put-attribute name="title" value="Momo - Add user" />
+		<put-attribute name="title" value="Momo - Add Team" />
 		<put-attribute name="currentPage" value="team" />
 		<put-attribute name="content" value="/WEB-INF/views/auth/team/addTeam.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/team/header_add.jsp" />
+	</definition>
+	<definition name="auth/team/editTeam" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Edit Team" />
+		<put-attribute name="currentPage" value="team" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/team/editTeam.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/team/header_add.jsp" />
+	</definition>
+	<definition name="auth/team/delete" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Delete Team" />
+		<put-attribute name="currentPage" value="team" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/team/deleteTeam.jsp" />
 		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
 		<put-attribute name="submenu" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/auth/team/header_add.jsp" />

@@ -14,4 +14,8 @@ public interface ITeamsManager {
 
 	public abstract Team getTeam(String id);
 
+	public abstract boolean updateTeam(Team team);
+
+	public abstract boolean deleteTeam(String id);
+
 }
