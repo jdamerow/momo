@@ -34,8 +34,18 @@ public class TeamsManager implements ITeamsManager {
 	}
 	
 	@Override
+	public boolean updateTeam(Team team) {
+		return dbManager.updateTeam(team);
+	}
+	
+	@Override
 	public Team getTeam(String id) {
 		return dbManager.getTeam(id);
+	}
+	
+	@Override
+	public boolean deleteTeam(String id) {
+		return dbManager.deleteTeam(id);
 	}
 	
 	@Override

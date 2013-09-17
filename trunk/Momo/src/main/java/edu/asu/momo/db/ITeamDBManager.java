@@ -14,4 +14,6 @@ public interface ITeamDBManager {
 
 	public abstract Team getTeam(String id);
 
+	public abstract boolean deleteTeam(String id);
+
 }

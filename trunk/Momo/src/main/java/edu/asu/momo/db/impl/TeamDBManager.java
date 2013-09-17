@@ -88,6 +88,13 @@ public class TeamDBManager implements ITeamDBManager {
 		return null;
 	}
 	
+	@Override
+	public boolean deleteTeam(String id) {
+		Team team = getTeam(id);
+		database.delete(team);
+		return true;
+	}
+	
 	@PreDestroy
 	public void shutdown() {
 		database.close();

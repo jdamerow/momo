@@ -15,9 +15,10 @@
 			<td><input type='password' name='j_password' /></td>
 		</tr>
 		<tr>
-			<td colspan='2'><input name="submit" type="submit"
-				value="submit" /></td>
-		</tr>
 	</table>
+	<p>
+		<input name="submit" type="submit" value="Login" class="button" />
+	</p>
+
 
 </form>
