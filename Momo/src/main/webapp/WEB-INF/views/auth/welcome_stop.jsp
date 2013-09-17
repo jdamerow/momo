@@ -5,6 +5,6 @@
 	<span class="byline">Get back your stolen time</span>
 </div>
 
-<p>You logged in ${entry.startDate}. Are you leaving and want to log
+<p>You clocked in ${entry.startDate}. Are you leaving and want to clock
 	out?</p>
-<a href="${pageContext.servletContext.contextPath}/auth/signOut" class="button">Log out</a>
+<a href="${pageContext.servletContext.contextPath}/auth/signOut" class="button">Clock out</a>

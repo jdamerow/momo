@@ -31,4 +31,6 @@ public interface IUserManager {
 	 */
 	public abstract List<User> getAllUsers();
 
+	public abstract boolean deleteUser(String username);
+
 }
