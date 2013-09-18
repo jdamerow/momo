@@ -1,7 +1,16 @@
 <script type="text/javascript" charset="utf-8">
 	$(document).ready(function() {
 		$('#userTable').dataTable({
-			"aaSorting" : [ [ 2, "desc" ], [1, "desc"] ]
+			"aaSorting" : [ [ 2, "asc" ], [1, "asc"] ],
+			"aoColumns": [
+                      {"bSortable": true},
+                      {"iDataSort": 2},
+                      {"bVisible": false},
+                      {"bSortable": false},
+                      {"bSortable": false},
+                      {"bSortable": true},
+                      {"bVisible": true}
+                     ]
 		});
 
 		$('.splitList').easyListSplitter({

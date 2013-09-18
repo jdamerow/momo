@@ -1,7 +1,5 @@
 package edu.asu.momo.web.recording.backing;
 
-import java.util.Date;
-
 import edu.asu.momo.web.projects.backing.ProjectBackingBean;
 import edu.asu.momo.web.user.backing.UserBackingBean;
 
@@ -9,8 +7,14 @@ public class TimeEntryBacking {
 	
 	private UserBackingBean user;
 	private String date;
+	private long dateAsMSec;
+	
 	private String startDate;
+	private long startTime;
+	
 	private String endDate;
+	private long endTime;
+	
 	private String time;
 	private ProjectBackingBean project;
 	
@@ -49,6 +53,24 @@ public class TimeEntryBacking {
 	}
 	public void setProject(ProjectBackingBean project) {
 		this.project = project;
+	}
+	public long getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
+	}
+	public long getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(long endTime) {
+		this.endTime = endTime;
+	}
+	public long getDateAsMSec() {
+		return dateAsMSec;
+	}
+	public void setDateAsMSec(long dateAsMSec) {
+		this.dateAsMSec = dateAsMSec;
 	}
 	
 	

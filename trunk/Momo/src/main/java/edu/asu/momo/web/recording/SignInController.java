@@ -33,6 +33,9 @@ public class SignInController {
 	@RequestMapping(value = "auth/signOut")
 	public String signOut(Principal principle) {
 		List<TimeEntry> entries = entryManager.getOpenTimeEntries(principle.getName());
+		if (entries == null || entries.isEmpty()) {
+			return "redirect:/auth/welcome";
+		}
 		TimeEntry entry = entries.get(0);
 		entryManager.stopRecording(entry);
 		

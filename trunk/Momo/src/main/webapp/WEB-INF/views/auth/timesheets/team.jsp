@@ -3,7 +3,7 @@
 
 <div class="title">
 	<h2>Team Timesheet Overview</h2>
-	<span class="byline">This are the timesheets of your team ${team.name} </span>
+	<span class="byline">These are the timesheets of your team ${team.name} </span>
 </div>
 
 <form:form method="post" modelAttribute="timeSheetSelection"
@@ -49,13 +49,14 @@
 
 <table id="userTable">
 <thead>
-	<tr><th>Name</th><th>Date</th><th>Signed in</th><th>Signed out</th><th>Duration</th><th>Project</th></tr>
+	<tr><th style="min-width: 80px">Name</th><th>Date</th><th></th><th>Signed in</th><th>Signed out</th><th width="100">Duration</th><th>Project</th></tr>
 </thead>
 <tbody>
 	<c:forEach items="${entries}" var="entry">
 		<tr>
 			<td>${entry.user.name}</td>
 			<td>${entry.date}</td>
+			<td>${entry.dateAsMSec}</td>
 			<td>${entry.startDate}</td>
 			<td>${entry.endDate}</td>
 			<td>${entry.time}</td>
