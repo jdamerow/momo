@@ -53,6 +53,11 @@ public class TimeEntryTranslator {
 		}
 		
 		/*
+		 * Set start time as long
+		 */
+		backingEntry.setDateAsMSec(entry.getStartDate().getTime());
+		
+		/*
 		 * Set time and date
 		 */
 		Date startDate = entry.getStartDate();
@@ -67,6 +72,7 @@ public class TimeEntryTranslator {
 		
 		if (entry.getEndDate() != null) {
 			backingEntry.setEndDate(timeFormat.format(entry.getEndDate()));
+			//backingEntry.setEndTime(entry.getEndDate().getTime());
 			
 			long startTime = startDate.getTime();
 			long endTime = entry.getEndDate().getTime();

@@ -83,6 +83,16 @@ public class TeamTimesheetsOverviewController {
 	@RequestMapping(value = "auth/timesheets/team/refreshTimesheet")
 	public String refreshTimesheet(Principal principal,
 			@ModelAttribute TimeSheetSelection selection, ModelMap map) {
+		
+		if (selection == null)
+			return "redirect:/auth/timesheets/overview";
+		
+		if (selection.getStartDay() == null) {
+			if (selection.getTeamId() != null)
+				return "redirect:/auth/timesheets/team/" + selection.getTeamId();
+			else
+				return "redirect:/auth/timesheets/overview";
+		}
 
 		List<TimeEntry> entries = new ArrayList<TimeEntry>();
 		
