@@ -35,17 +35,32 @@ public class DeleteTeamController {
 		map.addAttribute("team", teamTranslator.translateTeam(team));
 		return "auth/team/delete";
 	}
-
-	@RequestMapping(value = "auth/team/executeDelete")
-	public String executeDelete(Principal principal,
-			@ModelAttribute TeamBackingBean teamBean, ModelMap map) {
-		Team team = teamsManager.getTeam(teamBean.getId());
+	
+	@RequestMapping(value = "auth/team/delete")
+	public String prepareDeleteWithNullId(Principal principal, ModelMap map) {
+		Team team = teamsManager.getTeam(null);
 
 		if (team == null) {
 			return "redirect:/auth/team/manage";
 		}
 
-		teamsManager.deleteTeam(teamBean.getId());
+		map.addAttribute("team", teamTranslator.translateTeam(team));
+		return "auth/team/delete";
+	}
+
+	@RequestMapping(value = "auth/team/executeDelete")
+	public String executeDelete(Principal principal,
+			@ModelAttribute TeamBackingBean teamBean, ModelMap map) {
+		String id = teamBean.getId();
+		if (teamBean.getId().isEmpty())
+			id = null;
+		Team team = teamsManager.getTeam(id);
+
+		if (team == null) {
+			return "redirect:/auth/team/manage";
+		}
+
+		teamsManager.deleteTeam(id);
 		return "redirect:/auth/team/manage";
 	}
 

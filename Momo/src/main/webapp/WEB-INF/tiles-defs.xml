@@ -62,8 +62,24 @@
 		<put-attribute name="currentPage" value="timesheets" />
 		<put-attribute name="content" value="/WEB-INF/views/auth/timesheets/overview.jsp" />
 		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
-		<put-attribute name="submenu" value="" />
+		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_teamsheets_team.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/auth/timesheets/header_table.jsp" />
+	</definition>
+	<definition name="auth/timesheets/team" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Team Timesheets" />
+		<put-attribute name="currentPage" value="timesheets" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/timesheets/team.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/timesheets/header_js.jsp" />
+	</definition>
+	<definition name="auth/timesheets/team/forbidden" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - No access" />
+		<put-attribute name="currentPage" value="timesheets" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/timesheets/teamForbidden.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
 	</definition>
 	
 	<!-- Projects -->
