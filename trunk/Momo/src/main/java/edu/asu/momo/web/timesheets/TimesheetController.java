@@ -1,7 +1,6 @@
-package edu.asu.momo.web.recording;
+package edu.asu.momo.web.timesheets;
 
 import java.security.Principal;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,9 +20,11 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.recording.TimeEntryTranslator;
+import edu.asu.momo.teams.impl.TeamsManager;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
 import edu.asu.momo.web.recording.backing.TimePeriod;
 
@@ -36,6 +37,9 @@ public class TimesheetController {
 	@Autowired
 	private TimeEntryTranslator translator;
 	
+	@Autowired
+	private TeamsManager teamsManager;
+	
 	@RequestMapping(value = "auth/timesheets/overview")
 	public String showTimeEntries(Principal principal, ModelMap map) {
 		
@@ -47,6 +51,13 @@ public class TimesheetController {
 		}
 		map.addAttribute(new TimePeriod());
 		map.addAttribute("entries", backingEntries);
+		
+		/*
+		 * Find teams user is manager of
+		 */
+		List<Team> teams = teamsManager.getTeamsOfUser(principal.getName());
+		map.addAttribute("teams", teams);
+		
 		return "auth/timesheets/overview";
 	}
 

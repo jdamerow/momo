@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
+import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
+import edu.asu.momo.user.User;
+import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
 
 @Service
@@ -22,18 +25,37 @@ public class TimeEntryTranslator {
 	
 	@Autowired
 	private IProjectManager projectManager;
+	
+	@Autowired
+	private IUserManager userManager;
+	
+	@Autowired
+	private UserTranslator userTranslator;
 
 	public TimeEntryBacking translate(TimeEntry entry) {
 		TimeEntryBacking backingEntry = new TimeEntryBacking();
 		
+		/*
+		 * Set project
+		 */
 		if (entry.getProjectId() != null) {
 			Project p = projectManager.getProject(entry.getProjectId());
 			if (p != null)
 				backingEntry.setProject(projectTranslator.translate(p));
 		}
 		
+		/*
+		 * Set user
+		 */
+		User user = userManager.getUserById(entry.getUserId());
+		if (user != null) {
+			backingEntry.setUser(userTranslator.translateUser(user));
+		}
+		
+		/*
+		 * Set time and date
+		 */
 		Date startDate = entry.getStartDate();
-//		DateFormat format = DateFormat.getDateInstance();
 		SimpleDateFormat format = new SimpleDateFormat("EEEE, MMM dd, yyyy");
 		
 		String date = format.format(startDate);
