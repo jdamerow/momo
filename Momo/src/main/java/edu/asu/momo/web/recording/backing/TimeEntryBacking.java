@@ -17,6 +17,7 @@ public class TimeEntryBacking {
 	
 	private String time;
 	private ProjectBackingBean project;
+	private String notes;
 	
 	public UserBackingBean getUser() {
 		return user;
@@ -71,6 +72,12 @@ public class TimeEntryBacking {
 	}
 	public void setDateAsMSec(long dateAsMSec) {
 		this.dateAsMSec = dateAsMSec;
+	}
+	public String getNotes() {
+		return notes;
+	}
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 	
 	

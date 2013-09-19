@@ -23,6 +23,7 @@ import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.web.projects.backing.ProjectBackingBean;
 import edu.asu.momo.web.recording.backing.RecordingBackingBean;
+import edu.asu.momo.web.recording.backing.SignOutBackingBean;
 
 /**
  * Handles requests for the application home page.
@@ -67,6 +68,7 @@ public class HomeController {
 		
 		if (entries.size() == 1) {
 			model.addAttribute("entry", entries.get(0));
+			model.addAttribute(new SignOutBackingBean());
 			return "auth/welcomeStop";
 		}
 		

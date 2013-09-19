@@ -53,6 +53,11 @@ public class TimeEntryTranslator {
 		}
 		
 		/*
+		 * set notes
+		 */
+		backingEntry.setNotes(entry.getNotes());
+		
+		/*
 		 * Set start time as long
 		 */
 		backingEntry.setDateAsMSec(entry.getStartDate().getTime());
