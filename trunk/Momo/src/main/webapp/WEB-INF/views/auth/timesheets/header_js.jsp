@@ -9,7 +9,8 @@
                       {"bSortable": false},
                       {"bSortable": false},
                       {"bSortable": true},
-                      {"bVisible": true}
+                      {"bVisible": true},
+                      {"bSortable": true}
                      ]
 		});
 
