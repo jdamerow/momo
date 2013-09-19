@@ -4,7 +4,7 @@
 <ul>
 	<sec:authorize access="isAuthenticated()">
 		<li ${currentPage == "home" ? "class=\"current_page_item\"" : ""}><a
-			href="${pageContext.servletContext.contextPath}/auth/welcome" accesskey="1" title="">Enter time</a></li>
+			href="${pageContext.servletContext.contextPath}/auth/welcome" accesskey="1" title="">Clock In/Out</a></li>
 		<li
 			${currentPage == "timesheets" ? "class=\"current_page_item\"" : ""}><a
 			href="${pageContext.servletContext.contextPath}/auth/timesheets/overview" accesskey="2" title="">Timesheets</a></li>
