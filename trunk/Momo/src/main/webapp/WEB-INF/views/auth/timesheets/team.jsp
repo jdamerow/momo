@@ -49,7 +49,7 @@
 
 <table id="userTable">
 <thead>
-	<tr><th style="min-width: 80px">Name</th><th>Date</th><th></th><th>Signed in</th><th>Signed out</th><th width="100">Duration</th><th>Project</th><th>Notes</th></tr>
+	<tr><th style="min-width: 120px">Name</th><th width="180">Date</th><th></th><th width="110">Clocked in</th><th width="110">Clocked out</th><th width="90">Duration</th><th>Project</th><th>Notes</th></tr>
 </thead>
 <tbody>
 	<c:forEach items="${entries}" var="entry">
