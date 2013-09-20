@@ -24,7 +24,7 @@ import edu.asu.momo.user.User;
 
 @Component
 @PropertySource(value = "classpath:/db4o.properties")
-public class DatabaseManager implements Serializable, IDatabaseManager {
+public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 
 	@Autowired
 	private Environment env;
@@ -65,8 +65,7 @@ public class DatabaseManager implements Serializable, IDatabaseManager {
 	 */
 	@Override
 	public ObjectContainer getClient() {
-		ObjectContainer container = server.openClient();
-		return container;
+		return server.openClient();
 	}
 
 	private void close() {

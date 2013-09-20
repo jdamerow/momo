@@ -5,7 +5,7 @@ import java.util.List;
 import edu.asu.momo.user.User;
 
 /**
- * 
+ * Interface to be implemented by user manager classes.
  * @author Julia Damerow
  *
  */

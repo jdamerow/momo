@@ -1,15 +1,15 @@
 package edu.asu.momo.web;
 
 import java.security.Principal;
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
-import edu.asu.momo.db.ITimeEntryDBManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.recording.ITimeEntryManager;
@@ -29,6 +28,7 @@ import edu.asu.momo.web.recording.backing.SignOutBackingBean;
  * Handles requests for the application home page.
  */
 @Controller
+@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.TimeEntry;
@@ -12,6 +14,7 @@ import edu.asu.momo.db.ITimeEntryDBManager;
 import edu.asu.momo.recording.ITimeEntryManager;
 
 @Service
+@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class TimeEntryManager implements ITimeEntryManager {
 
 	@Autowired

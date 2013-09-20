@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import com.db4o.ObjectContainer;
@@ -17,6 +19,7 @@ import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.user.User;
 
 @Service
+@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class Db4oDBUserManager implements IUserManager {
 
 	@Autowired

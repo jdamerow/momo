@@ -7,13 +7,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.db4o.nativequery.expr.cmp.operand.ArrayAccessValue;
 
 import edu.asu.momo.core.Team;
 import edu.asu.momo.db.IUserManager;
@@ -24,6 +24,7 @@ import edu.asu.momo.web.projects.backing.ProjectBackingBean;
 import edu.asu.momo.web.teams.backing.TeamBackingBean;
 
 @Controller
+@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class AddProjectController {
 	
 	@Autowired

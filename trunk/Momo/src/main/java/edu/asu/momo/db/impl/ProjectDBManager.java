@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import com.db4o.ObjectContainer;
@@ -15,8 +17,10 @@ import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.db.IDatabaseManager;
+import edu.asu.momo.db.IProjectDBManager;
 
 @Service
+@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ProjectDBManager implements IProjectDBManager {
 
 	@Autowired
