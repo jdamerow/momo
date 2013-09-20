@@ -1,9 +1,15 @@
-package edu.asu.momo.db.impl;
+package edu.asu.momo.db;
 
 import java.util.List;
 
 import edu.asu.momo.core.Project;
 
+/**
+ * Interface to be implemented by database connector class.
+ * 
+ * @author Julia Damerow
+ *
+ */
 public interface IProjectDBManager {
 
 	public abstract Project getProject(String id);

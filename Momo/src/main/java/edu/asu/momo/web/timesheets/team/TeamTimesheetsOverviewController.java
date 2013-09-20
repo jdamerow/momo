@@ -11,9 +11,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +29,11 @@ import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
-import edu.asu.momo.web.recording.backing.TimePeriod;
 import edu.asu.momo.web.timesheets.backing.TimeSheetSelection;
 import edu.asu.momo.web.user.backing.UserBackingBean;
 
 @Controller
+@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class TeamTimesheetsOverviewController {
 
 	@Autowired

@@ -5,6 +5,12 @@ import java.util.List;
 
 import edu.asu.momo.core.TimeEntry;
 
+/**
+ * Interface to be implemented by time entry manager classes.
+ * 
+ * @author Julia Damerow
+ *
+ */
 public interface ITimeEntryDBManager {
 
 	public abstract List<TimeEntry> getOpenTimeEntries(String user);

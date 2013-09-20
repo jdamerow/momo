@@ -3,6 +3,8 @@ package edu.asu.momo.web.teams;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,7 @@ import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.web.teams.backing.TeamBackingBean;
 
 @Controller
+@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class DeleteTeamController {
 
 	@Autowired

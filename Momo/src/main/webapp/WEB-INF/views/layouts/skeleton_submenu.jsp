@@ -78,9 +78,8 @@ Released   : 20130920
 	</div>
 	<div id="copyright" class="container">
 		<p>
-			Copyright (c) 2013 Sitename.com. All rights reserved. | Photos by <a
-				href="http://fotogrph.com/">Fotogrph</a> | Design by <a
-				href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.
+			Copyright (c) 2013 <a href="http://devo-evo.lab.asu.edu/diging/">Digital Innovation Group</a>. All rights reserved. | Design by <a
+				href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a> | Icons by <a href="http://iconza.com/">Iconza</a>.
 		</p>
 	</div>
 

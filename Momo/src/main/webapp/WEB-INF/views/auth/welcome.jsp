@@ -9,7 +9,7 @@
 <p>Welcome back! Start your workday by clocking in!</p>
 <form:form method="post" modelAttribute="recording" action="${pageContext.servletContext.contextPath}/auth/signIn">
 	<p>
-	<form:select path="projectId" items="${projects}"  itemValue="id" itemLabel="name" />
+	Projects: <form:select path="projectId" items="${projects}"  itemValue="id" itemLabel="name" />
 	</p>
 	<p>
 	<input type="submit" name="submit" value="Clock in" class="button" />

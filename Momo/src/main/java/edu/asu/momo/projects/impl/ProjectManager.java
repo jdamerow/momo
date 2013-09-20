@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.core.Team;
-import edu.asu.momo.db.impl.IProjectDBManager;
+import edu.asu.momo.db.IProjectDBManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.teams.ITeamsManager;
 
@@ -20,6 +22,7 @@ import edu.asu.momo.teams.ITeamsManager;
  *
  */
 @Service
+@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ProjectManager implements IProjectManager {
 
 	@Autowired

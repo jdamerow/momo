@@ -6,16 +6,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.impl.ILoginManager;
 
 @Service(value = "momoUserService")
 public class MomoUserService implements UserDetailsService {
 
 	@Autowired
-	private IUserManager userManager;
+	private ILoginManager userManager;
 
 	@Override
-	public UserDetails loadUserByUsername(String username)
+	public synchronized UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		UserDetails matchingUser = userManager.getUserById(username);
 
