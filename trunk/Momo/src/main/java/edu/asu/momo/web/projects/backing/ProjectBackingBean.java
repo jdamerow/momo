@@ -2,11 +2,8 @@ package edu.asu.momo.web.projects.backing;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
-import edu.asu.momo.valid.TeamProvided;
 import edu.asu.momo.web.teams.backing.TeamBackingBean;
 import edu.asu.momo.web.user.backing.UserBackingBean;
 

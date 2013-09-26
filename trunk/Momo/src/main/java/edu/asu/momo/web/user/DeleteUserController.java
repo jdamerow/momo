@@ -3,8 +3,6 @@ package edu.asu.momo.web.user;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +13,6 @@ import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 
 @Controller
-@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class DeleteUserController {
 	
 	@Autowired
