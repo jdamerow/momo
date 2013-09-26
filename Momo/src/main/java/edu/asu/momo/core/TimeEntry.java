@@ -10,6 +10,7 @@ public class TimeEntry {
 	private String notes;
 	private String id;
 	private String userId;
+	private float breakTime;
 	
 	public Date getStartDate() {
 		return startDate;
@@ -46,6 +47,12 @@ public class TimeEntry {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public float getBreakTime() {
+		return breakTime;
+	}
+	public void setBreakTime(float breakTime) {
+		this.breakTime = breakTime;
 	}
 
 }

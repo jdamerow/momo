@@ -13,6 +13,7 @@ import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
+import edu.asu.momo.recording.impl.ITimeEntryUtility;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
@@ -31,6 +32,9 @@ public class TimeEntryTranslator {
 	
 	@Autowired
 	private UserTranslator userTranslator;
+	
+	@Autowired
+	private ITimeEntryUtility utility;
 
 	public TimeEntryBacking translate(TimeEntry entry) {
 		TimeEntryBacking backingEntry = new TimeEntryBacking();
@@ -77,17 +81,13 @@ public class TimeEntryTranslator {
 		
 		if (entry.getEndDate() != null) {
 			backingEntry.setEndDate(timeFormat.format(entry.getEndDate()));
-			//backingEntry.setEndTime(entry.getEndDate().getTime());
 			
-			long startTime = startDate.getTime();
-			long endTime = entry.getEndDate().getTime();
-			
-			// millisecs
-			float diff = endTime - startTime;
-			float hours = diff / (60 * 60 * 1000);
+			float hours = utility.getHoursWorked(entry);
 			
 			DecimalFormat floatForm = new DecimalFormat("#.##");
 			backingEntry.setTime(floatForm.format(hours));
+			
+			backingEntry.setTimeInHM(utility.getTimeAsHoursAndMinutes(hours));
 		}
 		else
 			backingEntry.setTime("-");

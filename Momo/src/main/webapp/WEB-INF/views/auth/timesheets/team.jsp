@@ -49,7 +49,7 @@
 
 <table id="userTable">
 <thead>
-	<tr><th style="min-width: 120px">Name</th><th width="180">Date</th><th></th><th width="110">Clocked in</th><th width="110">Clocked out</th><th width="90">Duration</th><th>Project</th><th>Notes</th></tr>
+	<tr><th style="min-width: 120px">Name</th><th width="180">Date</th><th></th><th width="110">Clocked in</th><th width="110">Clocked out</th><th width="90">Duration</th><th></th><th>Project</th><th>Notes</th></tr>
 </thead>
 <tbody>
 	<c:forEach items="${entries}" var="entry">
@@ -59,6 +59,7 @@
 			<td>${entry.dateAsMSec}</td>
 			<td>${entry.startDate}</td>
 			<td>${entry.endDate}</td>
+			<td>${entry.timeInHM}</td>
 			<td>${entry.time}</td>
 			<td>${entry.project.name}</td>
 			<td>${entry.notes}</td>
@@ -68,3 +69,6 @@
 </tbody>
 </table>
 
+<p style="clear: both; margin-top: 40px; font-weight: bold;">
+Total of all work times: <c:out value="${total}"></c:out>.
+</p>

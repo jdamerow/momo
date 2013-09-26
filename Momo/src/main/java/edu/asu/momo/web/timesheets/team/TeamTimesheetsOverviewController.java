@@ -22,6 +22,7 @@ import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.recording.TimeEntryTranslator;
+import edu.asu.momo.recording.impl.ITimeEntryUtility;
 import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.user.User;
@@ -50,6 +51,9 @@ public class TeamTimesheetsOverviewController {
 
 	@Autowired
 	private UserTranslator userTranslator;
+	
+	@Autowired
+	private ITimeEntryUtility utility;
 
 	@RequestMapping(value = "auth/timesheets/team/{teamId}")
 	public String showTeamTimesheets(Principal principal, ModelMap map,
@@ -156,6 +160,12 @@ public class TeamTimesheetsOverviewController {
 
 		List<UserBackingBean> members = new ArrayList<UserBackingBean>();
 		getMembers(members, team);
+		
+		/*
+		 * Calculate total of all work times
+		 */
+		float totalWorked = utility.calculateTotal(entries);
+		map.addAttribute("total", utility.getTimeAsHoursAndMinutes(totalWorked));
 
 		map.addAttribute("team", teamTranslator.translateTeam(team));
 		map.addAttribute("managers", managers);
