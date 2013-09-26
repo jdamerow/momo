@@ -28,6 +28,8 @@ public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 
 	@Autowired
 	private Environment env;
+	
+	private ObjectContainer client;
 
 	/**
 	 * 
@@ -37,7 +39,7 @@ public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 	private boolean encrypt = true;
 
 	@PostConstruct
-	public void init() {
+	public synchronized void init() {
 		close();
 		ServerConfiguration configuration = Db4oClientServer
 				.newServerConfiguration();
@@ -56,6 +58,7 @@ public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 		config.common().objectClass(User.class).cascadeOnActivate(true);
 		config.common().objectClass(User.class).cascadeOnUpdate(true);
 		server = Db4oClientServer.openServer(configuration, dbpath, 0);
+		client = server.openClient();
 	}
 
 	/*
@@ -65,10 +68,14 @@ public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 	 */
 	@Override
 	public ObjectContainer getClient() {
-		return server.openClient();
+		return client;
 	}
 
-	private void close() {
+	private synchronized void close() {
+		if (client != null) {
+			client.close();
+			client = null;
+		}
 		if (server != null) {
 			server.close();
 		}

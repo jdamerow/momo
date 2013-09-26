@@ -13,8 +13,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -31,7 +29,6 @@ import edu.asu.momo.web.recording.backing.TimeEntryBacking;
 import edu.asu.momo.web.recording.backing.TimePeriod;
 
 @Controller
-@Scope(value="session", proxyMode=ScopedProxyMode.INTERFACES)
 public class TimesheetController {
 
 	@Autowired
@@ -58,10 +55,21 @@ public class TimesheetController {
 		/*
 		 * Find teams user is manager of
 		 */
-		List<Team> teams = teamsManager.getTeamsOfUser(principal.getName());
+		List<Team> teams = getManagingTeams(principal.getName());
 		map.addAttribute("teams", teams);
 		
 		return "auth/timesheets/overview";
+	}
+	
+	protected List<Team> getManagingTeams(String name) {
+		List<Team> teams = teamsManager.getTeamsOfUser(name);
+		List<Team> managingTeams = new ArrayList<Team>();
+		
+		for (Team team : teams) {
+			if (team.getManagers().contains(name))
+				managingTeams.add(team);
+		}
+		return managingTeams;
 	}
 
 	@RequestMapping(value = "auth/timesheets/refreshTimesheet")
@@ -99,8 +107,11 @@ public class TimesheetController {
 		for (TimeEntry entry : entries) {
 			backingEntries.add(translator.translate(entry));
 		}
-		
 		map.addAttribute("entries", backingEntries);
+		
+		List<Team> teams = getManagingTeams(principal.getName());
+		map.addAttribute("teams", teams);
+		
 		return "auth/timesheets/overview";
 		
 	}

@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import com.db4o.ObjectContainer;
@@ -20,7 +17,6 @@ import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.IProjectDBManager;
 
 @Service
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ProjectDBManager implements IProjectDBManager {
 
 	@Autowired
@@ -28,7 +24,7 @@ public class ProjectDBManager implements IProjectDBManager {
 	private ObjectContainer database;
 	
 	@PostConstruct
-	public void init() {
+	public synchronized void init() {
 		database = dbManager.getClient();
 	}
 	
@@ -94,8 +90,4 @@ public class ProjectDBManager implements IProjectDBManager {
 		return true;
 	}
 	
-	@PreDestroy
-	public void shutdown() {
-		database.close();
-	}
 }
