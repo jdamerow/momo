@@ -24,6 +24,7 @@ import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.recording.TimeEntryTranslator;
+import edu.asu.momo.recording.impl.ITimeEntryUtility;
 import edu.asu.momo.teams.impl.TeamsManager;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
 import edu.asu.momo.web.recording.backing.TimePeriod;
@@ -40,6 +41,9 @@ public class TimesheetController {
 	@Autowired
 	private TeamsManager teamsManager;
 	
+	@Autowired
+	private ITimeEntryUtility utility;
+	
 	@RequestMapping(value = "auth/timesheets/overview")
 	public String showTimeEntries(Principal principal, ModelMap map) {
 		
@@ -51,6 +55,13 @@ public class TimesheetController {
 		}
 		map.addAttribute(new TimePeriod());
 		map.addAttribute("entries", backingEntries);
+		
+		/*
+		 * Calculate total of all work times
+		 */
+		float totalWorked = utility.calculateTotal(entries);
+		map.addAttribute("total", utility.getTimeAsHoursAndMinutes(totalWorked));
+
 		
 		/*
 		 * Find teams user is manager of
@@ -108,6 +119,13 @@ public class TimesheetController {
 			backingEntries.add(translator.translate(entry));
 		}
 		map.addAttribute("entries", backingEntries);
+		
+		/*
+		 * Calculate total of all work times
+		 */
+		float totalWorked = utility.calculateTotal(entries);
+		map.addAttribute("total", utility.getTimeAsHoursAndMinutes(totalWorked));
+
 		
 		List<Team> teams = getManagingTeams(principal.getName());
 		map.addAttribute("teams", teams);

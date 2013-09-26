@@ -16,6 +16,7 @@ public class TimeEntryBacking {
 	private long endTime;
 	
 	private String time;
+	private String timeInHM;
 	private ProjectBackingBean project;
 	private String notes;
 	
@@ -78,6 +79,12 @@ public class TimeEntryBacking {
 	}
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+	public String getTimeInHM() {
+		return timeInHM;
+	}
+	public void setTimeInHM(String timeInHM) {
+		this.timeInHM = timeInHM;
 	}
 	
 	

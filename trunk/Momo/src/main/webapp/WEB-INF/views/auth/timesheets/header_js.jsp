@@ -8,8 +8,9 @@
                       {"bVisible": false},
                       {"bSortable": false},
                       {"bSortable": false},
+                      {"iDataSort": 6},
+                      {"bVisible": false},
                       {"bSortable": true},
-                      {"bVisible": true},
                       {"bSortable": true}
                      ]
 		});
