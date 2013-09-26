@@ -22,12 +22,13 @@
 <table id="userTable">
 	<thead>
 		<tr>
-			<th width="190">Date</th>
+			<th width="160">Date</th>
 			<th></th>
 			<th width="110">Clocked in</th>
 			<th width="110">Clocked out</th>
 			<th width="90">Duration</th>
 			<th></th>
+			<th width="90">Lunch break</th>
 			<th>Project</th>
 			<th>Notes</th>
 		</tr>
@@ -41,6 +42,7 @@
 				<td>${entry.endDate}</td>
 				<td>${entry.timeInHM}</td>
 				<td>${entry.time}</td>
+				<td>${entry.breakTime}</td>
 				<td>${entry.project.name}</td>
 				<td>${entry.notes}</td>
 			</tr>
@@ -50,7 +52,7 @@
 </table>
 
 <p style="clear: both; margin-top: 40px; font-weight: bold;">
-	Total of all work times:
+	Total of all work times (minus lunch breaks):
 	<c:out value="${total}"></c:out>
 	.
 </p>

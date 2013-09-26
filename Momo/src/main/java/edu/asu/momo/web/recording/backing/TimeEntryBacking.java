@@ -20,6 +20,8 @@ public class TimeEntryBacking {
 	private ProjectBackingBean project;
 	private String notes;
 	
+	private String breakTime;
+	
 	public UserBackingBean getUser() {
 		return user;
 	}
@@ -85,6 +87,12 @@ public class TimeEntryBacking {
 	}
 	public void setTimeInHM(String timeInHM) {
 		this.timeInHM = timeInHM;
+	}
+	public String getBreakTime() {
+		return breakTime;
+	}
+	public void setBreakTime(String breakTime) {
+		this.breakTime = breakTime;
 	}
 	
 	

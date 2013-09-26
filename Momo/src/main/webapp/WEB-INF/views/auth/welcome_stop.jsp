@@ -13,5 +13,9 @@
 	Notes:<br>
 	<form:textarea path="notes" cols="40" rows="10" />
 	</p>
+	<p>
+	Did you take a lunch break?
+	<form:radiobuttons path="breakTime" items="${breakTimes}" itemValue="time" itemLabel="label" cssClass="radioOptions" />
+	</p>
 	<input type="submit" value="Clock out" name="submit" class="button" />
 </form:form>

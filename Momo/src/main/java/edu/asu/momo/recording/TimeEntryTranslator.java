@@ -35,6 +35,9 @@ public class TimeEntryTranslator {
 	
 	@Autowired
 	private ITimeEntryUtility utility;
+	
+	@Autowired
+	private BreakTimeManager breakManager;
 
 	public TimeEntryBacking translate(TimeEntry entry) {
 		TimeEntryBacking backingEntry = new TimeEntryBacking();
@@ -67,10 +70,19 @@ public class TimeEntryTranslator {
 		backingEntry.setDateAsMSec(entry.getStartDate().getTime());
 		
 		/*
+		 * Set BreakTime
+		 */
+		BreakTime breakTime = breakManager.getBreakTime(entry.getBreakTime());
+		if (breakTime != null)
+			backingEntry.setBreakTime(breakTime.getLabel());
+		else
+			backingEntry.setBreakTime("-");
+		
+		/*
 		 * Set time and date
 		 */
 		Date startDate = entry.getStartDate();
-		SimpleDateFormat format = new SimpleDateFormat("EEEE, MMM dd, yyyy");
+		SimpleDateFormat format = new SimpleDateFormat("EE, MMM dd, yyyy");
 		
 		String date = format.format(startDate);
 		

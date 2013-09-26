@@ -17,6 +17,7 @@ import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
+import edu.asu.momo.recording.BreakTimeManager;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.web.projects.backing.ProjectBackingBean;
 import edu.asu.momo.web.recording.backing.RecordingBackingBean;
@@ -38,6 +39,9 @@ public class HomeController {
 	
 	@Autowired
 	private ProjectTranslator projectTranslator;
+	
+	@Autowired
+	private BreakTimeManager breakTimeManager;
 	
 	
 	/**
@@ -66,6 +70,8 @@ public class HomeController {
 		if (entries.size() == 1) {
 			model.addAttribute("entry", entries.get(0));
 			model.addAttribute(new SignOutBackingBean());
+			
+			model.addAttribute("breakTimes", breakTimeManager.getBreakTimes());
 			return "auth/welcomeStop";
 		}
 		

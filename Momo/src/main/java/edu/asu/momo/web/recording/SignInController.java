@@ -41,6 +41,7 @@ public class SignInController {
 		}
 		TimeEntry entry = entries.get(0);
 		entry.setNotes(signOut.getNotes());
+		entry.setBreakTime(signOut.getBreakTime());
 		
 		entryManager.stopRecording(entry);
 		

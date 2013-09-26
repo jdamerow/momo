@@ -10,6 +10,7 @@
                       {"iDataSort": 5},
                       {"bVisible": false},
                       {"bSortable": true},
+                      {"bSortable": true},
                       {"bSortable": true}
                      ]
 		});
