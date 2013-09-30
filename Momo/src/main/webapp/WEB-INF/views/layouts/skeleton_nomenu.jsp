@@ -33,6 +33,9 @@ Released   : 20130920
 <link
 	href="${pageContext.servletContext.contextPath}/resources/js/css/jquery.dataTables_themeroller.css"
 	rel="stylesheet" type="text/css" media="all" />
+<link
+	href="${pageContext.servletContext.contextPath}/resources/js/timepicker/jquery.ui.timepicker.css"
+	rel="stylesheet" type="text/css" media="all" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -43,6 +46,7 @@ Released   : 20130920
 <!-- <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.js"></script>-->
 <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.dataTables.js"></script>
 <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.easyListSplitter.js"></script>
+<script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/timepicker/jquery.ui.timepicker.js"></script>
 
 <tiles:insertAttribute name="header" />
 </head>

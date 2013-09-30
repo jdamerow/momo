@@ -5,30 +5,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.TimeEntry;
-import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.ITimeEntryDBManager;
 
 @Service
-public class TimeEntryDBManager implements ITimeEntryDBManager {
+public class TimeEntryDBManager extends DBManager implements ITimeEntryDBManager {
 
-	@Autowired
-	private IDatabaseManager dbManager;
-	private ObjectContainer database;
-	
-	@PostConstruct
-	public synchronized void init() {
-		database = dbManager.getClient();
-	}
 	
 	/* (non-Javadoc)
 	 * @see edu.asu.momo.recording.impl.ITimeEntryManager#getOpenTimeEntries(edu.asu.momo.user.User)
@@ -91,9 +78,7 @@ public class TimeEntryDBManager implements ITimeEntryDBManager {
 	 */
 	@Override
 	public boolean updateTimeEntry(TimeEntry entry) {
-		database.store(entry);
-		database.commit();
-		return true;
+		return updateObject(entry);
 	}
 	
 	

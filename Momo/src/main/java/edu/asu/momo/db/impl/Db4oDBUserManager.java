@@ -3,38 +3,22 @@ package edu.asu.momo.db.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
-import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.user.User;
 
 @Service
-public class Db4oDBUserManager implements IUserManager {
+public class Db4oDBUserManager extends DBManager implements IUserManager {
 
-	@Autowired
-	private IDatabaseManager dbManager;
-	private ObjectContainer database;
-	
-	@PostConstruct
-	public synchronized void init() {
-		database = dbManager.getClient();
-	}
-	
 	/* (non-Javadoc)
 	 * @see edu.asu.momo.db.impl.IUserManager#saveUser(edu.asu.momo.core.User)
 	 */
 	@Override
 	public boolean saveUser(User user) {
-		database.store(user);
-		database.commit();
-		return true;
+		return updateObject(user);
 	}
 	
 	/* (non-Javadoc)

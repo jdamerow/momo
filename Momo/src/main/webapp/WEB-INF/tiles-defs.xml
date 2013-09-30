@@ -150,6 +150,16 @@
 		<put-attribute name="header" value="" />
 	</definition>
 	
+	<!-- Time Requests -->
+	<definition name="auth/requests/timeChange" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Request a time change" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/requestTimeChange.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_tc_header.jsp" />
+	</definition>
+	
 	<!-- User management -->
 	<definition name="auth/user/manage" extends="base.definition.submenu">
 		<put-attribute name="title" value="Momo - Manage users" />

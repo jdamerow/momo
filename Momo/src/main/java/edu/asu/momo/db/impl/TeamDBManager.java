@@ -3,39 +3,24 @@ package edu.asu.momo.db.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.Team;
-import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.ITeamDBManager;
 
 @Service
-public class TeamDBManager implements ITeamDBManager {
+public class TeamDBManager extends DBManager implements ITeamDBManager {
 
-	@Autowired
-	private IDatabaseManager dbManager;
-	private ObjectContainer database;
-	
-	@PostConstruct
-	public synchronized void init() {
-		database = dbManager.getClient();
-	}
 	
 	/* (non-Javadoc)
 	 * @see edu.asu.momo.db.impl.ITeamDBManager#updateTeam(edu.asu.momo.core.Team)
 	 */
 	@Override
 	public boolean updateTeam(Team team) {
-		database.store(team);
-		database.commit();
-		return true;
+		return updateObject(team);
 	}
 	
 	/* (non-Javadoc)
