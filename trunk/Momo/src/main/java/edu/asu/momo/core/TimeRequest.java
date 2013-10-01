@@ -14,6 +14,7 @@ public abstract class TimeRequest {
 	private String reviewedBy;
 	private int status;
 	private String reviewNotes;
+	private String id;
 
 	public TimeRequest() {
 		super();
@@ -57,6 +58,14 @@ public abstract class TimeRequest {
 
 	public void setReviewNotes(String reviewNotes) {
 		this.reviewNotes = reviewNotes;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

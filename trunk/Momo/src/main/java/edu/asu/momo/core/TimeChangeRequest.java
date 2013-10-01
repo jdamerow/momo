@@ -15,6 +15,8 @@ public class TimeChangeRequest extends TimeRequest {
 	private Date oldEndDate;
 	private Date newStartDate;
 	private Date newEndDate;
+	private Date makeupStartDate;
+	private Date makeupEndDate;
 	private Date reviewStartDate;
 	private Date reviewEndDate;
 	
@@ -53,6 +55,18 @@ public class TimeChangeRequest extends TimeRequest {
 	}
 	public void setReviewEndDate(Date reviewEndDate) {
 		this.reviewEndDate = reviewEndDate;
+	}
+	public Date getMakeupStartDate() {
+		return makeupStartDate;
+	}
+	public void setMakeupStartDate(Date makeupStartDate) {
+		this.makeupStartDate = makeupStartDate;
+	}
+	public Date getMakeupEndDate() {
+		return makeupEndDate;
+	}
+	public void setMakeupEndDate(Date makeupEndDate) {
+		this.makeupEndDate = makeupEndDate;
 	}
 	
 	

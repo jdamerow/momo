@@ -16,7 +16,16 @@
 		    showPeriod: true,
 		    showLeadingZero: true
 		});
+		$('#makeup_shift_start').timepicker({
+		    showPeriod: true,
+		    showLeadingZero: true
+		});
+		$('#makeup_shift_end').timepicker({
+		    showPeriod: true,
+		    showLeadingZero: true
+		});
 		$("#shift_day_picker").datepicker();
+		$("#makeup_shift_day_picker").datepicker();
 	});
 
 </script>

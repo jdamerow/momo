@@ -4,7 +4,7 @@ import java.util.List;
 
 import edu.asu.momo.core.TimeRequest;
 
-public interface ITimeRequestManager {
+public interface ITimeRequestDBManager {
 
 	public abstract boolean storeTimeRequest(TimeRequest request);
 

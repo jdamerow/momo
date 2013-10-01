@@ -7,9 +7,9 @@ import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
 import edu.asu.momo.core.TimeRequest;
-import edu.asu.momo.db.ITimeRequestManager;
+import edu.asu.momo.db.ITimeRequestDBManager;
 
-public class TimeRequestDBManager extends DBManager implements ITimeRequestManager {
+public class TimeRequestDBManager extends DBManager implements ITimeRequestDBManager {
 
 	/* (non-Javadoc)
 	 * @see edu.asu.momo.db.impl.ITimeRequestManager#storeTimeRequest(edu.asu.momo.core.TimeRequest)

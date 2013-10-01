@@ -13,7 +13,6 @@ import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
-import edu.asu.momo.recording.impl.ITimeEntryUtility;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
