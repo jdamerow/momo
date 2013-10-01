@@ -19,18 +19,37 @@ public class TimeRequestDBManager extends DBManager implements ITimeRequestDBMan
 		return updateObject(request);
 	}
 	
-	/* (non-Javadoc)
-	 * @see edu.asu.momo.db.impl.ITimeRequestManager#getAllTimeRequests(java.lang.String)
-	 */
 	@Override
-	public List<TimeRequest> getAllTimeRequests(final String username) {
+	public TimeRequest getTimeRequest(final String id) {
 		ObjectSet<TimeRequest> results = database.query(new Predicate<TimeRequest>() {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public boolean match(TimeRequest arg0) {
-				if (((TimeRequest)arg0).getUsername().equals(username))
+				if (((TimeRequest)arg0).getId().equals(id))
+					return true;
+				return false;
+			}
+		});
+		
+		if (results != null && results.size() > 0)
+			return results.get(0);
+		return null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see edu.asu.momo.db.impl.ITimeRequestManager#getAllTimeRequests(java.lang.String)
+	 */
+	@Override
+	public List<TimeRequest> getAllTimeRequests(final String username, final int status) {
+		ObjectSet<TimeRequest> results = database.query(new Predicate<TimeRequest>() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean match(TimeRequest arg0) {
+				if (((TimeRequest)arg0).getUsername().equals(username) && arg0.getStatus() == status)
 					return true;
 				return false;
 			}

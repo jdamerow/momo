@@ -27,7 +27,14 @@
 		<put-attribute name="header" value="" />
 	</definition>
 
-
+	<!-- Error -->
+	<definition name="auth/error" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - Error" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/error/error.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="topmenu" value="" />
+	</definition>
+	
 	<!-- public pages -->
 	<definition name="login" extends="base.definition.empty">
 		<put-attribute name="title" value="Momo - Login" />
@@ -158,6 +165,22 @@
 		<put-attribute name="navigation" value="" />
 		<put-attribute name="submenu" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_tc_header.jsp" />
+	</definition>
+	<definition name="auth/requests/list" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - See all time change requests" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/list.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_list_header.jsp" />
+	</definition>
+	<definition name="auth/requests/view" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - View time change request" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/view.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
 	</definition>
 	
 	<!-- User management -->

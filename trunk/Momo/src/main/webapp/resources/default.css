@@ -122,6 +122,12 @@
 		color: rgb(194, 93, 93);
 	}
 	
+	table.request td {
+		padding: 10px;
+		border-bottom: 1px solid #D6DFEE;
+		margin-top: 0px;
+	}
+	
 /*********************************************************************************/
 /* Image Style                                                                   */
 /*********************************************************************************/
@@ -303,6 +309,42 @@
 		text-transform: uppercase;
 		font-weight: 600;
 		color: #FFF;
+	}
+	
+	.button_blue
+	{
+		display: inline-block;
+		padding: 1em 3em;
+		background: #9FAAC7 url(images/bg01.png);
+		border-color: #9FABCA;
+		-moz-transition: opacity 0.25s ease-in-out;
+		-webkit-transition: opacity 0.25s ease-in-out;
+		-o-transition: opacity 0.25s ease-in-out;
+		-ms-transition: opacity 0.25s ease-in-out;
+		transition: opacity 0.25s ease-in-out;
+		letter-spacing: 0.20em;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: #294427;
+	}
+	
+	.button_red
+	{
+		display: inline-block;
+		padding: 1em 3em;
+		background: #DDA9A9 url(images/bg01.png);
+		border-color: #CEB4B4;
+		-moz-transition: opacity 0.25s ease-in-out;
+		-webkit-transition: opacity 0.25s ease-in-out;
+		-o-transition: opacity 0.25s ease-in-out;
+		-ms-transition: opacity 0.25s ease-in-out;
+		transition: opacity 0.25s ease-in-out;
+		letter-spacing: 0.20em;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: #294427;
 	}
 
 		.button:hover

@@ -1,5 +1,7 @@
 package edu.asu.momo.core;
 
+import java.util.Date;
+
 /**
  * This class is the basis for all time (change) requests,
  * such as time change, time off, additional time, etc.
@@ -15,7 +17,9 @@ public abstract class TimeRequest {
 	private int status;
 	private String reviewNotes;
 	private String id;
-
+	private Date rejectedApprovedOn;
+	private Date requestedOn;
+	
 	public TimeRequest() {
 		super();
 	}
@@ -66,6 +70,22 @@ public abstract class TimeRequest {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Date getRejectedApprovedOn() {
+		return rejectedApprovedOn;
+	}
+
+	public void setRejectedApprovedOn(Date rejectedApprovedOn) {
+		this.rejectedApprovedOn = rejectedApprovedOn;
+	}
+
+	public Date getRequestedOn() {
+		return requestedOn;
+	}
+
+	public void setRequestedOn(Date requestedOn) {
+		this.requestedOn = requestedOn;
 	}
 
 }

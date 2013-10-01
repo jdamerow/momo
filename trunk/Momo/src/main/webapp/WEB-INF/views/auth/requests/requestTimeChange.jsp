@@ -58,6 +58,19 @@
 			<td><form:errors path="makeupShiftStart" cssClass="errors" /></td>
 			<td><form:errors path="makeupShiftEnd" cssClass="errors" /></td>
 		</tr>
+		<tr>
+			<td>Why would you like to change your shift?</td>
+			<td colspan="3">
+			<form:textarea rows="7" cols="70"
+					path="requestNotes" />
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="3">
+			<form:errors path="requestNotes" cssClass="errors" />
+			</td>
+		</tr>
 
 	</table>
 	
