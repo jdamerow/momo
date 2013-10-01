@@ -18,6 +18,8 @@ public class TimeChangeRequestBean extends TimeRequestBean {
 	@DateDayCheck
 	@GroupComplete(groupId = 1, message = "Please specify a date.")
 	private String makeupDay;
+	private long makeupDayMS;
+	
 	@DateTimeCheck
 	@GroupComplete(groupId = 1, message = "Please specify a start time.")
 	private String makeupShiftStart;
@@ -54,6 +56,12 @@ public class TimeChangeRequestBean extends TimeRequestBean {
 	}
 	public void setNewShiftEnd(String newShiftEnd) {
 		this.newShiftEnd = newShiftEnd;
+	}
+	public long getMakeupDayMS() {
+		return makeupDayMS;
+	}
+	public void setMakeupDayMS(long makeupDayMS) {
+		this.makeupDayMS = makeupDayMS;
 	}
 	
 	

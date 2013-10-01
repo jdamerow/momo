@@ -23,7 +23,7 @@ public abstract class DBManager {
 		database = dbManager.getClient();
 	}
 
-	public boolean updateObject(Object object) {
+	public synchronized boolean updateObject(Object object) {
 		database.store(object);
 		database.commit();
 		return true;

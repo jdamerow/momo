@@ -19,6 +19,7 @@ public class TimeChangeRequest extends TimeRequest {
 	private Date makeupEndDate;
 	private Date reviewStartDate;
 	private Date reviewEndDate;
+
 	
 	public Date getOldStartDate() {
 		return oldStartDate;

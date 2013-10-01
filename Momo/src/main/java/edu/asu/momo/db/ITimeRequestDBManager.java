@@ -8,6 +8,8 @@ public interface ITimeRequestDBManager {
 
 	public abstract boolean storeTimeRequest(TimeRequest request);
 
-	public abstract List<TimeRequest> getAllTimeRequests(String username);
+	public abstract List<TimeRequest> getAllTimeRequests(String username, int status);
+
+	public abstract TimeRequest getTimeRequest(final String id);
 
 }

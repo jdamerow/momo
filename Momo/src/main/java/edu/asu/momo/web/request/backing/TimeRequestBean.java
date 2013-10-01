@@ -4,18 +4,31 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import edu.asu.momo.valid.DateDayCheck;
 import edu.asu.momo.valid.DateTimeCheck;
+import edu.asu.momo.web.user.backing.UserBackingBean;
 
 public class TimeRequestBean {
 
-	@NotEmpty
+	@NotEmpty(message = "What day is your shift?")
 	@DateDayCheck
 	private String shiftDay;
-	@NotEmpty
+	private long shiftDayMS;
+	
+	@NotEmpty(message = "When does your shift start?")
 	@DateTimeCheck
 	private String shiftStart;
-	@NotEmpty
+	@NotEmpty(message = "When does your shift end?")
 	@DateTimeCheck
 	private String shiftEnd;
+	
+	private UserBackingBean requester;
+	
+	@NotEmpty(message = "We would like to know why you want to change your work times.")
+	private String requestNotes;
+	
+	private String status;	
+	private String id;
+	private String requestedOn;
+	private long requestedOnMS;
 
 	public TimeRequestBean() {
 		super();
@@ -43,6 +56,62 @@ public class TimeRequestBean {
 
 	public void setShiftEnd(String shiftEnd) {
 		this.shiftEnd = shiftEnd;
+	}
+
+	public String getRequestNotes() {
+		return requestNotes;
+	}
+
+	public void setRequestNotes(String requestNotes) {
+		this.requestNotes = requestNotes;
+	}
+
+	public UserBackingBean getRequester() {
+		return requester;
+	}
+
+	public void setRequester(UserBackingBean requester) {
+		this.requester = requester;
+	}
+
+	public long getShiftDayMS() {
+		return shiftDayMS;
+	}
+
+	public void setShiftDayMS(long shiftDayMS) {
+		this.shiftDayMS = shiftDayMS;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getRequestedOn() {
+		return requestedOn;
+	}
+
+	public void setRequestedOn(String requstedOn) {
+		this.requestedOn = requstedOn;
+	}
+
+	public long getRequestedOnMS() {
+		return requestedOnMS;
+	}
+
+	public void setRequestedOnMS(long requestedOnMS) {
+		this.requestedOnMS = requestedOnMS;
 	}
 
 }
