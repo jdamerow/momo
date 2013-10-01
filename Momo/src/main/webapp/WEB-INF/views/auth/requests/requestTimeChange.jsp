@@ -6,42 +6,62 @@
 
 <div class="title">
 	<h2>Request time change</h2>
-	<span class="byline">What do you request to change?</span>
+	<span class="byline">What shift do you request to change?</span>
 </div>
 
 <form:form method="post" modelAttribute="timeChangeRequestBean"
-	action="${pageContext.servletContext.contextPath}/auth/requests/requestChangeTime">
+	action="${pageContext.servletContext.contextPath}/auth/requests/requestTimeChange">
 
 	<table class="form">
 		<tr>
 			<td width="300">What is the shift you'd like to change?</td>
-			<td width="100">Day: <form:input type="text" path="shiftDay"
+			<td width="200">Day: <br><form:input type="text" path="shiftDay"
 					id="shift_day_picker" /></td>
-			<td><form:errors path="shiftDay" cssClass="errors" /></td>
-			<td width="100">Start time: <form:input type="text"
+			<td width="200">Start time: <br><form:input type="text"
 					path="shiftStart" id="shift_start" /></td>
-			<td><form:errors path="shiftStart" cssClass="errors" /></td>
-			<td width="100">End time: <form:input type="text"
+			<td width="200">End time: <br><form:input type="text"
 					path="shiftEnd" id="shift_end" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><form:errors path="shiftDay" cssClass="errors" /></td>
+			<td><form:errors path="shiftStart" cssClass="errors" /></td>
 			<td><form:errors path="shiftEnd" cssClass="errors" /></td>
 		</tr>
 		<tr>
-			<td width="300">Do you still want to work at that day?</td>
-			<td width="100"><form:radiobutton path="workThatDay" value="0" id="no" />No
-				<form:radiobutton path="workThatDay" value="1" id="yes" />Yes</td>
-			<td><form:errors path="workThatDay" cssClass="errors" /></td>
-			<td width="100">New start time: <form:input type="text"
+			<td>Do you still want to work at that day?</td>
+			<td></td>
+			<td>New start time: <br><form:input type="text"
 					path="newShiftStart" id="new_shift_start" /></td>
-			<td><form:errors path="newShiftStart" cssClass="errors" /></td>
-			<td width="100">New end time: <form:input type="text"
+			<td>New end time: <br><form:input type="text"
 					path="newShiftEnd" id="new_shift_end" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><form:errors path="newShiftStart" cssClass="errors" /></td>
 			<td><form:errors path="newShiftEnd" cssClass="errors" /></td>
 		</tr>
-
+		
 		<tr>
-			<td colspan='3'><input name="submit" type="submit"
-				value="Request Change" /></td>
+			<td>Do you want to make up for the hours on another day?</td>
+			<td>Day: <br><form:input type="text" path="makeupDay"
+					id="makeup_shift_day_picker" /></td>
+			<td>Start time: <br><form:input type="text"
+					path="makeupShiftStart" id="makeup_shift_start" /></td>
+			<td>End time: <br><form:input type="text"
+					path="makeupShiftEnd" id="makeup_shift_end" /></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td><form:errors path="makeupDay" cssClass="errors" /></td>
+			<td><form:errors path="makeupShiftStart" cssClass="errors" /></td>
+			<td><form:errors path="makeupShiftEnd" cssClass="errors" /></td>
+		</tr>
+
 	</table>
+	
+	<input name="submit" type="submit"
+				value="Request Change" class="button"/>
 
 </form:form>

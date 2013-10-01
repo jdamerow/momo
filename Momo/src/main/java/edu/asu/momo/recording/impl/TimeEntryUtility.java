@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.TimeEntry;
+import edu.asu.momo.recording.ITimeEntryUtility;
 
 @Service
 public class TimeEntryUtility implements ITimeEntryUtility {

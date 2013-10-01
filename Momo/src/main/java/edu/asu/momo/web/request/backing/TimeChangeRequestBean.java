@@ -1,38 +1,47 @@
 package edu.asu.momo.web.request.backing;
 
-public class TimeChangeRequestBean {
+import edu.asu.momo.valid.DateDayCheck;
+import edu.asu.momo.valid.DateTimeCheck;
+import edu.asu.momo.valid.GroupComplete;
+import edu.asu.momo.valid.GroupCompleteCheck;
 
-	private String shiftDay;
-	private String shiftStart;
-	private String shiftEnd;
-	
-	private int workThatDay;
+@GroupCompleteCheck(groupMessages= { "Please specify both, a new start and end time, for your work shift.", "Please specify date, start, and end time for the day you want to make up your hours." })
+public class TimeChangeRequestBean extends TimeRequestBean {
+
+	@DateTimeCheck
+	@GroupComplete(groupId = 0)
 	private String newShiftStart;
+	@DateTimeCheck
+	@GroupComplete(groupId = 0)
 	private String newShiftEnd;
 	
-	public String getShiftDay() {
-		return shiftDay;
+	@DateDayCheck
+	@GroupComplete(groupId = 1, message = "Please specify a date.")
+	private String makeupDay;
+	@DateTimeCheck
+	@GroupComplete(groupId = 1, message = "Please specify a start time.")
+	private String makeupShiftStart;
+	@DateTimeCheck
+	@GroupComplete(groupId = 1, message = "Please specify an end time.")
+	private String makeupShiftEnd;
+	
+	public String getMakeupDay() {
+		return makeupDay;
 	}
-	public void setShiftDay(String shiftDay) {
-		this.shiftDay = shiftDay;
+	public void setMakeupDay(String makeupDay) {
+		this.makeupDay = makeupDay;
 	}
-	public String getShiftStart() {
-		return shiftStart;
+	public String getMakeupShiftStart() {
+		return makeupShiftStart;
 	}
-	public void setShiftStart(String shiftStart) {
-		this.shiftStart = shiftStart;
+	public void setMakeupShiftStart(String makeupShiftStart) {
+		this.makeupShiftStart = makeupShiftStart;
 	}
-	public String getShiftEnd() {
-		return shiftEnd;
+	public String getMakeupShiftEnd() {
+		return makeupShiftEnd;
 	}
-	public void setShiftEnd(String shiftEnd) {
-		this.shiftEnd = shiftEnd;
-	}
-	public int getWorkThatDay() {
-		return workThatDay;
-	}
-	public void setWorkThatDay(int workThatDay) {
-		this.workThatDay = workThatDay;
+	public void setMakeupShiftEnd(String makeupShiftEnd) {
+		this.makeupShiftEnd = makeupShiftEnd;
 	}
 	public String getNewShiftStart() {
 		return newShiftStart;
