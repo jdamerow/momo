@@ -29,6 +29,9 @@ public class TimeRequestBean {
 	private String id;
 	private String requestedOn;
 	private long requestedOnMS;
+	private UserBackingBean reviewer;
+	private String reviewedOn;
+	private String reviewNotes;
 
 	public TimeRequestBean() {
 		super();
@@ -112,6 +115,30 @@ public class TimeRequestBean {
 
 	public void setRequestedOnMS(long requestedOnMS) {
 		this.requestedOnMS = requestedOnMS;
+	}
+
+	public UserBackingBean getReviewer() {
+		return reviewer;
+	}
+
+	public void setReviewer(UserBackingBean reviewer) {
+		this.reviewer = reviewer;
+	}
+
+	public String getReviewedOn() {
+		return reviewedOn;
+	}
+
+	public void setReviewedOn(String reviewedOn) {
+		this.reviewedOn = reviewedOn;
+	}
+
+	public String getReviewNotes() {
+		return reviewNotes;
+	}
+
+	public void setReviewNotes(String reviewNotes) {
+		this.reviewNotes = reviewNotes;
 	}
 
 }

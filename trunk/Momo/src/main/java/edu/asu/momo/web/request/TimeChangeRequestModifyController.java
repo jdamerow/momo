@@ -21,6 +21,7 @@ import edu.asu.momo.requests.IStatus;
 import edu.asu.momo.requests.ITimeRequestManager;
 import edu.asu.momo.requests.TimeRequestTranslator;
 import edu.asu.momo.teams.ITeamsManager;
+import edu.asu.momo.web.Constants;
 import edu.asu.momo.web.HomeController;
 import edu.asu.momo.web.request.backing.ActionRequestBean;
 
@@ -42,7 +43,7 @@ public class TimeChangeRequestModifyController {
 	private ITeamsManager teamsManager;
 	
 	
-	@RequestMapping(value = "auth/requests/view/{id}")
+	@RequestMapping(value = Constants.VIEW_REQUEST + "{id}")
 	public String showRequest(@PathVariable("id") String id, Principal principal, ModelMap map) {
 		
 		TimeRequest timeRequest = requestManager.getRequest(id);

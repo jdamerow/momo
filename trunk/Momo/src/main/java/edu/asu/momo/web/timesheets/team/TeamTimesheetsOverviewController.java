@@ -18,16 +18,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.asu.momo.core.Team;
+import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.db.IUserManager;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.recording.ITimeEntryUtility;
 import edu.asu.momo.recording.TimeEntryTranslator;
+import edu.asu.momo.requests.IStatus;
+import edu.asu.momo.requests.ITimeRequestManager;
+import edu.asu.momo.requests.TimeRequestTranslator;
 import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.recording.backing.TimeEntryBacking;
+import edu.asu.momo.web.request.backing.TimeRequestBean;
 import edu.asu.momo.web.timesheets.backing.TimeSheetSelection;
 import edu.asu.momo.web.user.backing.UserBackingBean;
 
@@ -54,6 +59,13 @@ public class TeamTimesheetsOverviewController {
 	
 	@Autowired
 	private ITimeEntryUtility utility;
+	
+	@Autowired
+	private ITimeRequestManager requestManager;
+	
+	@Autowired
+	private TimeRequestTranslator requestTranslator;
+	
 
 	@RequestMapping(value = "auth/timesheets/team/{teamId}")
 	public String showTeamTimesheets(Principal principal, ModelMap map,
@@ -97,16 +109,20 @@ public class TeamTimesheetsOverviewController {
 		}
 
 		List<TimeEntry> entries = new ArrayList<TimeEntry>();
-		
+		List<TimeChangeRequest> approvedRequest = new ArrayList<TimeChangeRequest>();
+		List<TimeChangeRequest> deniedRequest = new ArrayList<TimeChangeRequest>();
+
 
 		if (!(selection.getStartDay() == null || selection.getStartDay().trim()
 				.isEmpty())
 				|| selection.getEndDay() == null
 				|| selection.getEndDay().trim().isEmpty()) {
+			
+			
 			try {
 				Date start;
 				Date end;
-
+				
 				SimpleDateFormat parserSDF = new SimpleDateFormat("MM/dd/yyyy");
 				start = parserSDF.parse(selection.getStartDay());
 				end = parserSDF.parse(selection.getEndDay());
@@ -115,6 +131,12 @@ public class TeamTimesheetsOverviewController {
 					for (UserBackingBean man : selection.getManagers()) {
 						entries.addAll(timeEntryManager.getTimeEntries(man.getUsername(),
 								start, end));
+						
+						/*
+						 * get requests
+						 */
+						approvedRequest.addAll(requestManager.getTimeChangeRequests(man.getUsername(), IStatus.APPROVED, start, end));
+						deniedRequest.addAll(requestManager.getTimeChangeRequests(man.getUsername(), IStatus.REJECTED, start, end));
 					}
 				}
 				
@@ -122,6 +144,12 @@ public class TeamTimesheetsOverviewController {
 					for (UserBackingBean mem : selection.getMembers()) {
 						entries.addAll(timeEntryManager.getTimeEntries(mem.getUsername(),
 								start, end));
+						
+						/*
+						 * get requests
+						 */
+						approvedRequest.addAll(requestManager.getTimeChangeRequests(mem.getUsername(), IStatus.APPROVED, start, end));
+						deniedRequest.addAll(requestManager.getTimeChangeRequests(mem.getUsername(), IStatus.REJECTED, start, end));
 					}
 				}
 				
@@ -137,12 +165,19 @@ public class TeamTimesheetsOverviewController {
 				if (selection.getManagers() != null) {
 					for (UserBackingBean man : selection.getManagers()) {
 						entries.addAll(getLastWeeksTimeEntries(man.getUsername()));
+						/*
+						 * Find time change requests
+						 */
+						approvedRequest.addAll(getLastWeeksTimeRequests(man.getUsername(), IStatus.APPROVED));
+						deniedRequest.addAll(getLastWeeksTimeRequests(man.getUsername(), IStatus.REJECTED));
 					}
 				}
 				
 				if (selection.getMembers() != null) {
 					for (UserBackingBean mem : selection.getMembers()) {
 						entries.addAll(getLastWeeksTimeEntries(mem.getUsername()));
+						approvedRequest.addAll(getLastWeeksTimeRequests(mem.getUsername(), IStatus.APPROVED));
+						deniedRequest.addAll(getLastWeeksTimeRequests(mem.getUsername(), IStatus.REJECTED));
 					}
 				}
 			}
@@ -153,6 +188,24 @@ public class TeamTimesheetsOverviewController {
 			backingEntries.add(timeTranslator.translate(entry));
 		}
 		
+		/*
+		 * Add requests
+		 */
+		List<TimeRequestBean> approvedbeans = new ArrayList<TimeRequestBean>();
+		for (TimeChangeRequest req : approvedRequest) {
+			approvedbeans.add(requestTranslator.translateTimeChangeRequest(req));
+		}
+		map.addAttribute("approvedRequests", approvedbeans);
+		
+		List<TimeRequestBean> deniedbeans = new ArrayList<TimeRequestBean>();
+		for (TimeChangeRequest req : deniedRequest) {
+			deniedbeans.add(requestTranslator.translateTimeChangeRequest(req));
+		}
+		map.addAttribute("deniedRequests", deniedbeans);
+		
+		/*
+		 * Get user
+		 */
 		Team team = teamsManager.getTeam(selection.getTeamId());
 		
 		List<UserBackingBean> managers = new ArrayList<UserBackingBean>();
@@ -198,12 +251,7 @@ public class TeamTimesheetsOverviewController {
 	}
 
 	protected List<TimeEntry> getLastWeeksTimeEntries(String username) {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-
-		long DAY_IN_MS = 1000 * 60 * 60 * 24;
-		Date weekAgo = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
+		Date weekAgo = getAWeekAgo();
 
 		List<TimeEntry> entries = timeEntryManager.getTimeEntries(
 				username, weekAgo, new Date());
@@ -215,5 +263,21 @@ public class TeamTimesheetsOverviewController {
 			}
 		});
 		return entries;
+	}
+	
+	protected Date getAWeekAgo() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		
+		long DAY_IN_MS = 1000 * 60 * 60 * 24;
+		Date weekAgo = new Date(System.currentTimeMillis() - (7 * DAY_IN_MS));
+		return weekAgo;
+	}
+	
+	protected List<TimeChangeRequest> getLastWeeksTimeRequests(String user, int status) {
+		Date weekAgo = getAWeekAgo();
+		
+		return requestManager.getTimeChangeRequests(user, status, weekAgo, new Date());
 	}
 }

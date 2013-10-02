@@ -41,6 +41,18 @@
 			<td>Status:</td>
 			<td>${timeRequest.status}</td>
 		</tr>
+		<tr style="background-color: #EFF4FC;">
+			<td>Reviewer:</td>
+			<td>${timeRequest.reviewer.name}</td>
+		</tr>
+		<tr style="background-color: #EFF4FC;">
+			<td>Reviewed on:</td>
+			<td>${timeRequest.reviewedOn}</td>
+		</tr>
+			<tr style="background-color: #EFF4FC;">
+			<td>Review notes:</td>
+			<td>${timeRequest.reviewNotes}</td>
+		</tr>
 	</tbody>
 </table>
 </c:if>

@@ -123,10 +123,22 @@ public class TimeRequestTranslator {
 		/*
 		 * Set requested on date
 		 */
+		SimpleDateFormat formatWithTime = new SimpleDateFormat("EE, MMM dd, yyyy (hh:mm aa)");
+		
 		if (request.getRequestedOn() != null) {
-			SimpleDateFormat formatWithTime = new SimpleDateFormat("EE, MMM dd, yyyy (hh:mm aa)");
 			bean.setRequestedOn(formatWithTime.format(request.getRequestedOn()));
 			bean.setRequestedOnMS(request.getRequestedOn().getTime());
+		}
+		
+		if (request.getReviewedBy() != null && !request.getReviewedBy().trim().isEmpty()) {
+			User reviewer = userManager.getUserById(request.getReviewedBy());
+			if (reviewer != null) {
+				bean.setReviewer(userTranslator.translateUser(reviewer));
+			}
+			if (request.getRequestedOn() != null) {
+				bean.setReviewedOn(formatWithTime.format(request.getRequestedOn()));
+			}
+			bean.setReviewNotes(request.getReviewNotes());
 		}
 		
 		return bean;

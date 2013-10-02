@@ -12,4 +12,6 @@ public interface ITimeRequestDBManager {
 
 	public abstract TimeRequest getTimeRequest(final String id);
 
+	public abstract List<TimeRequest> getAllTimeRequests(final String username);
+
 }

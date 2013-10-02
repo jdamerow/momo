@@ -18,4 +18,6 @@ public interface ITeamsManager {
 
 	public abstract boolean deleteTeam(String id);
 
+	public abstract List<Team> getManagedTeams(String manager);
+
 }

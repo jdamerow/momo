@@ -59,4 +59,23 @@ public class TimeRequestDBManager extends DBManager implements ITimeRequestDBMan
 		requests.addAll(results);
 		return requests;
 	}
+	
+	@Override
+	public List<TimeRequest> getAllTimeRequests(final String username) {
+		ObjectSet<TimeRequest> results = database.query(new Predicate<TimeRequest>() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean match(TimeRequest arg0) {
+				if (((TimeRequest)arg0).getUsername().equals(username))
+					return true;
+				return false;
+			}
+		});
+		
+		List<TimeRequest> requests = new ArrayList<TimeRequest>();
+		requests.addAll(results);
+		return requests;
+	}
 }

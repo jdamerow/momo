@@ -1,5 +1,6 @@
 package edu.asu.momo.requests.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,7 +35,17 @@ public class TimeRequestsManager implements ITimeRequestManager {
 	}
 	
 	@Override
+	public List<TimeRequest> getRequestsOfUser(String user) {
+		return dbManager.getAllTimeRequests(user);
+	}
+	
+	@Override
 	public TimeRequest getRequest(String id) {
 		return dbManager.getTimeRequest(id);
+	}
+	
+	@Override
+	public List<TimeChangeRequest> getTimeChangeRequests(String username, int status, Date startDate, Date endDate) {
+		return dbManager.getTimeChangeRequests(username, status, startDate, endDate);
 	}
 }
