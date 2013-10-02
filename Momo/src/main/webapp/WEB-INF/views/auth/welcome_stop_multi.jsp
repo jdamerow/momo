@@ -2,7 +2,7 @@
 
 <div class="title">
 	<h2>Welcome to Momo!</h2>
-	<span class="byline">Get back your stolen time</span>
+	<span class="byline">Get back your lost time</span>
 </div>
 
 <p>You have several time entries that were not stopped. You should take a look at

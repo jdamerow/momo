@@ -3,7 +3,7 @@
 
 <div class="title">
 	<h2>Welcome to Momo!</h2>
-	<span class="byline">Get back your stolen time</span>
+	<span class="byline">Get back your lost time</span>
 </div>
 
 <p>Welcome back! Start your workday by clocking in!</p>

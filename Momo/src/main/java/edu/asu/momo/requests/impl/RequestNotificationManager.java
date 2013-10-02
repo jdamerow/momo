@@ -19,6 +19,7 @@ import edu.asu.momo.notifications.EmailNotificationSender;
 import edu.asu.momo.requests.IRequestNotificationManager;
 import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.user.User;
+import edu.asu.momo.web.Constants;
 import edu.asu.momo.web.HomeController;
 
 @Service
@@ -75,6 +76,13 @@ public class RequestNotificationManager implements IRequestNotificationManager {
 						text = text.replace("$end$", timeFormat.format(request.getOldEndDate()));
 						
 						/*
+						 * build link
+						 */
+						String webapp = env.getProperty("webapp_url");
+						String link = webapp + Constants.VIEW_REQUEST + request.getId();
+						text = text.replace("$link$", link);
+						
+						/*
 						 * build email subject
 						 */
 						String title = env.getProperty("time.change.request.title");
@@ -117,11 +125,18 @@ public class RequestNotificationManager implements IRequestNotificationManager {
 			text = text.replace("$end$", timeFormat.format(request.getOldEndDate()));
 			
 			/*
+			 * build link
+			 */
+			String webapp = env.getProperty("webapp_url");
+			String link = webapp + Constants.VIEW_REQUEST + request.getId();
+			text = text.replace("$link$", link);
+			
+			/*
 			 * build email subject
 			 */
 			String title = env.getProperty("time.approval.title");
 			
-			notificationSender.sendNotificationEmail(manager.getEmail(), title , text);
+			notificationSender.sendNotificationEmail(user.getEmail(), title , text);
 		}		
 	}
 	
@@ -152,11 +167,18 @@ public class RequestNotificationManager implements IRequestNotificationManager {
 			text = text.replace("$end$", timeFormat.format(request.getOldEndDate()));
 			
 			/*
+			 * build link
+			 */
+			String webapp = env.getProperty("webapp_url");
+			String link = webapp + Constants.VIEW_REQUEST + request.getId();
+			text = text.replace("$link$", link);
+			
+			/*
 			 * build email subject
 			 */
 			String title = env.getProperty("time.rejection.title");
 			
-			notificationSender.sendNotificationEmail(manager.getEmail(), title , text);
+			notificationSender.sendNotificationEmail(user.getEmail(), title , text);
 		}
 	}
 }

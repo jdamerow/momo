@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.asu.momo.core.Project;
+import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeEntry;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.recording.BreakTimeManager;
 import edu.asu.momo.recording.ITimeEntryManager;
+import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.web.projects.backing.ProjectBackingBean;
 import edu.asu.momo.web.recording.backing.RecordingBackingBean;
 import edu.asu.momo.web.recording.backing.SignOutBackingBean;
@@ -43,17 +45,22 @@ public class HomeController {
 	@Autowired
 	private BreakTimeManager breakTimeManager;
 	
+	@Autowired
+	private ITeamsManager teamManager;
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "auth/welcome", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, Principal principle) {
+	public String home(Locale locale, Model model, Principal principal) {
 		
-		List<TimeEntry> entries = timeEntryManager.getOpenTimeEntries(principle.getName());
+		List<TimeEntry> entries = timeEntryManager.getOpenTimeEntries(principal.getName());
+		List<Team> managedTeams = teamManager.getManagedTeams(principal.getName());
+		model.addAttribute("managedTeams", managedTeams);
 		
 		if (entries == null || entries.size() == 0) {
-			List<Project> projects = projectManager.getProjectsOfUser(principle.getName());
+			List<Project> projects = projectManager.getProjectsOfUser(principal.getName());
 			List<ProjectBackingBean> beans = new ArrayList<ProjectBackingBean>();
 			
 			for (Project project : projects) {

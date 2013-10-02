@@ -8,7 +8,7 @@
 </ul>
 
 <c:if test="${not empty teams}">
-	<h2>Time Change Requests</h2>
+	<h2 style="margin-top: 40px;">Time Change Requests</h2>
 	
 	<ul>
 		<li><a href="${pageContext.servletContext.contextPath}/auth/requests/list">List Requests</a>

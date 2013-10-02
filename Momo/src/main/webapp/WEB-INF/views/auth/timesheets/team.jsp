@@ -85,3 +85,71 @@
 	<c:out value="${total}"></c:out>
 	.
 </p>
+
+<h3 style="margin-top: 100px;">Approved time change requests</h3>
+<p>
+<table id="requestTable">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Requested by</th>
+			<th>Requested on</th>
+			<th></th>
+			<th width="250">Day of shift requested to change</th>
+			<th></th>
+			<th width="220">Requested to change time to</th>
+			<th width="220">Requested to make up on</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${approvedRequests}" var="entry">
+			<tr>
+				<td><a title="View request" href="${pageContext.servletContext.contextPath}/auth/requests/view/${entry.id}"><img alt="Show details" src="${pageContext.servletContext.contextPath}/resources/images/icons/clipboard24.png"></a></td>
+				<td>${entry.requester.name}</td>
+				<td>${entry.requestedOn}</td>
+				<td>${entry.requestedOnMS}</td>
+				<td>${entry.shiftDay} <br> ${entry.shiftStart} - ${entry.shiftEnd}</td>
+				<td>${entry.shiftDayMS}</td>
+				<td>${entry.newShiftStart} - ${entry.newShiftEnd}</td>
+				<td>${entry.makeupDay}<br>${entry.makeupShiftStart} - ${entry.makeupShiftEnd}</td>
+				<td>${entry.shiftDayMS}</td>
+			</tr>
+
+		</c:forEach>
+	</tbody>
+</table>
+
+<h3 style="margin-top: 100px;">Rejected time change requests</h3>
+<p>
+<table id="rejectedTable">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Requested by</th>
+			<th>Requested on</th>
+			<th></th>
+			<th width="250">Day of shift requested to change</th>
+			<th></th>
+			<th width="220">Requested to change time to</th>
+			<th width="220">Requested to make up on</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${deniedRequests}" var="entry">
+			<tr>
+				<td><a title="View request" href="${pageContext.servletContext.contextPath}/auth/requests/view/${entry.id}"><img alt="Show details" src="${pageContext.servletContext.contextPath}/resources/images/icons/clipboard24.png"></a></td>
+				<td>${entry.requester.name}</td>
+				<td>${entry.requestedOn}</td>
+				<td>${entry.requestedOnMS}</td>
+				<td>${entry.shiftDay} <br> ${entry.shiftStart} - ${entry.shiftEnd}</td>
+				<td>${entry.shiftDayMS}</td>
+				<td>${entry.newShiftStart} - ${entry.newShiftEnd}</td>
+				<td>${entry.makeupDay}<br>${entry.makeupShiftStart} - ${entry.makeupShiftEnd}</td>
+				<td>${entry.shiftDayMS}</td>
+			</tr>
+
+		</c:forEach>
+	</tbody>
+</table>

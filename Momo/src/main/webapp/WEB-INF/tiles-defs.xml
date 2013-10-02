@@ -168,7 +168,7 @@
 	</definition>
 	<definition name="auth/requests/list" extends="base.definition.nomenu">
 		<put-attribute name="title" value="Momo - See all time change requests" />
-		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="currentPage" value="timesheets" />
 		<put-attribute name="content" value="/WEB-INF/views/auth/requests/list.jsp" />
 		<put-attribute name="navigation" value="" />
 		<put-attribute name="submenu" value="" />
@@ -181,6 +181,30 @@
 		<put-attribute name="navigation" value="" />
 		<put-attribute name="submenu" value="" />
 		<put-attribute name="header" value="" />
+	</definition>
+	<definition name="auth/requests/mylist" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - Your time change requests" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/mylist.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_mylist_header.jsp" />
+	</definition>
+	<definition name="auth/requests/rejected" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - Rejected time change requests" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/rejected.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_table_header.jsp" />
+	</definition>
+	<definition name="auth/requests/accepted" extends="base.definition.nomenu">
+		<put-attribute name="title" value="Momo - Approved time change requests" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/requests/accepted.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_table_header.jsp" />
 	</definition>
 	
 	<!-- User management -->
