@@ -19,6 +19,7 @@ import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ServerConfiguration;
 
 import edu.asu.momo.core.Team;
+import edu.asu.momo.core.TimeRequest;
 import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.user.User;
 
@@ -57,6 +58,8 @@ public class Db4oDatabaseManager implements Serializable, IDatabaseManager {
 		config.common().objectClass(Team.class).objectField("id").indexed(true);
 		config.common().objectClass(User.class).cascadeOnActivate(true);
 		config.common().objectClass(User.class).cascadeOnUpdate(true);
+		config.common().objectClass(TimeRequest.class).objectField("username");
+		config.common().objectClass(TimeRequest.class).objectField("status");
 		server = Db4oClientServer.openServer(configuration, dbpath, 0);
 		client = server.openClient();
 	}
