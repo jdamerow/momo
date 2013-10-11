@@ -16,6 +16,7 @@
 	<li><a
 		href="${pageContext.servletContext.contextPath}/auth/requests/timeChange">Request
 			a time change</a></li>
+	<li><a target="_blank" href="${pageContext.servletContext.contextPath}/auth/requests/showCalendar">Show Calendar</a>
 	<li><a
 		href="${pageContext.servletContext.contextPath}/auth/requests/mylist">See
 			your time change requests</a></li>

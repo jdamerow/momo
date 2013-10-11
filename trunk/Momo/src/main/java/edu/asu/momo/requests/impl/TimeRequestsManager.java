@@ -48,4 +48,9 @@ public class TimeRequestsManager implements ITimeRequestManager {
 	public List<TimeChangeRequest> getTimeChangeRequests(String username, int status, Date startDate, Date endDate) {
 		return dbManager.getTimeChangeRequests(username, status, startDate, endDate);
 	}
+
+	@Override
+	public List<TimeChangeRequest> getRequests(Date start, Date end, int status) {
+		return dbManager.getTimeChangeRequests(null, status, start, end);
+	}
 }

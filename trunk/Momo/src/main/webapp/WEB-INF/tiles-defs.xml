@@ -206,6 +206,12 @@
 		<put-attribute name="submenu" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/auth/requests/req_table_header.jsp" />
 	</definition>
+	<definition name="auth/requests/showCalendar" template="/WEB-INF/views/auth/requests/weekcalendar.jsp">
+		
+	</definition>
+	<definition name="auth/requests/events" template="/WEB-INF/views/auth/requests/events.jsp">
+		
+	</definition>
 	
 	<!-- User management -->
 	<definition name="auth/user/manage" extends="base.definition.submenu">
