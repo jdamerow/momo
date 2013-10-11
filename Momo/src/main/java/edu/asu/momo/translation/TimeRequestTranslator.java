@@ -1,4 +1,4 @@
-package edu.asu.momo.requests;
+package edu.asu.momo.translation;
 
 import java.text.DateFormat;
 import java.text.ParseException;
