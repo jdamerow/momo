@@ -20,5 +20,7 @@ public interface ITimeRequestManager {
 			Date startDate, Date endDate);
 
 	public abstract List<TimeRequest> getRequestsOfUser(String user);
+	
+	public List<TimeChangeRequest> getRequests(Date start, Date end, int status);
 
 }

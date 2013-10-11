@@ -27,7 +27,7 @@ public class TimeChangeRequestDBManager extends TimeRequestDBManager implements
 
 					@Override
 					public boolean match(TimeChangeRequest arg0) {
-						if (!arg0.getUsername().equals(username))
+						if (username != null && !arg0.getUsername().equals(username))
 							return false;
 
 						if (!(arg0.getStatus() == status))
@@ -38,7 +38,7 @@ public class TimeChangeRequestDBManager extends TimeRequestDBManager implements
 						 */
 						if (arg0.getOldStartDate().getTime() >= startDate
 								.getTime()
-								|| arg0.getOldEndDate().getTime() <= endDate
+								&& arg0.getOldEndDate().getTime() <= endDate
 										.getTime())
 							return true;
 
