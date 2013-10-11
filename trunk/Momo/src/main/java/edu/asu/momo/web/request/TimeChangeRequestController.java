@@ -20,7 +20,7 @@ import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.requests.IRequestNotificationManager;
 import edu.asu.momo.requests.IStatus;
 import edu.asu.momo.requests.ITimeRequestManager;
-import edu.asu.momo.requests.TimeRequestTranslator;
+import edu.asu.momo.translation.TimeRequestTranslator;
 import edu.asu.momo.web.HomeController;
 import edu.asu.momo.web.request.backing.TimeChangeRequestBean;
 

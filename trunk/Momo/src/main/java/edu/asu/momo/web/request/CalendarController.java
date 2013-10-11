@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.requests.IStatus;
 import edu.asu.momo.requests.ITimeRequestManager;
-import edu.asu.momo.requests.TimeRequestTranslator;
-import edu.asu.momo.web.request.backing.TimeChangeRequestBean;
+import edu.asu.momo.translation.TimeRequestCalendarTranslator;
+import edu.asu.momo.web.request.backing.TimeChangeRequestCalendarBean;
 
 @Controller
 public class CalendarController {
@@ -25,7 +25,7 @@ public class CalendarController {
 	private ITimeRequestManager requestManager;
 	
 	@Autowired 
-	private TimeRequestTranslator requestTranslator;
+	private TimeRequestCalendarTranslator requestTranslator;
 
 	@RequestMapping(value = "auth/requests/showCalendar")
 	public String showCalendar() {
@@ -56,14 +56,14 @@ public class CalendarController {
 		
 		List<TimeChangeRequest> requests = requestManager.getRequests(startDate, endDate, IStatus.APPROVED);
 
-		List<TimeChangeRequestBean> requestBeans = new ArrayList<TimeChangeRequestBean>();
+		List<TimeChangeRequestCalendarBean> requestBeans = new ArrayList<TimeChangeRequestCalendarBean>();
 		for (TimeChangeRequest timeRequest : requests) {
-			TimeChangeRequestBean bean = requestTranslator.translateTimeChangeRequest(timeRequest);
+			TimeChangeRequestCalendarBean bean = requestTranslator.translateToCalendarBean(timeRequest);
 			if (bean != null)
 				requestBeans.add(bean);
 		}
 		
-		map.addAttribute("requests", requests);
+		map.addAttribute("requests", requestBeans);
 		
 		return "auth/requests/events";
 	}
