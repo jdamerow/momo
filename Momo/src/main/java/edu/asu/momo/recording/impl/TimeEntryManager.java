@@ -51,4 +51,9 @@ public class TimeEntryManager implements ITimeEntryManager {
 		return dbManager.getTimeEntries(user, startDate, endDate);
 	}
 
+	@Override
+	public TimeEntry getTimeEntry(String id) {
+		return dbManager.getTimeEntry(id);
+	}
+
 }

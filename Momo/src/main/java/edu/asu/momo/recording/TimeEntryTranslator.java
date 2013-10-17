@@ -51,6 +51,13 @@ public class TimeEntryTranslator {
 		}
 		
 		/*
+		 * Set id
+		 */
+		if (entry.getId() != null) {
+			backingEntry.setId(entry.getId());
+		}
+		
+		/*
 		 * Set user
 		 */
 		User user = userManager.getUserById(entry.getUserId());

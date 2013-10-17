@@ -5,6 +5,7 @@ import edu.asu.momo.web.user.backing.UserBackingBean;
 
 public class TimeEntryBacking {
 	
+	private String id;
 	private UserBackingBean user;
 	private String date;
 	private long dateAsMSec;
@@ -93,6 +94,12 @@ public class TimeEntryBacking {
 	}
 	public void setBreakTime(String breakTime) {
 		this.breakTime = breakTime;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

@@ -14,6 +14,8 @@ public interface ITimeEntryManager {
 
 	public abstract List<TimeEntry> getOpenTimeEntries(final String user);
 
+	public abstract TimeEntry getTimeEntry(final String id);
+
 	public abstract List<TimeEntry> getTimeEntries(final String user, Date startDate, Date endDate);
 
 }

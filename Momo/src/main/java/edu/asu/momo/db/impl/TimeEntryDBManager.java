@@ -80,6 +80,18 @@ public class TimeEntryDBManager extends DBManager implements ITimeEntryDBManager
 	public boolean updateTimeEntry(TimeEntry entry) {
 		return updateObject(entry);
 	}
+
+	@Override
+	public TimeEntry getTimeEntry(String id) {
+		TimeEntry example = new TimeEntry();
+		example.setId(id);
+		ObjectSet<TimeEntry> results = database.queryByExample(example);
+		
+		if (results.size() > 0)
+			return results.get(0);
+		
+		return null;
+	}
 	
 	
 	
