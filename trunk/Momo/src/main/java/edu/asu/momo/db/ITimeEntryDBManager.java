@@ -19,4 +19,5 @@ public interface ITimeEntryDBManager {
 
 	public abstract List<TimeEntry> getTimeEntries(final String user, Date startDate, Date endDate);
 
+	public TimeEntry getTimeEntry(String id);
 }
