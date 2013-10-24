@@ -44,7 +44,7 @@ public class SignInController {
 		 */
 		String projectId = recording.getProjectId();
 		
-		entryManager.startRecording(principle.getName(), projectId, null);
+		entryManager.startRecording(principle.getName(), projectId, recording.getNotes());
 		
 		return "redirect:/auth/welcome";
 	}
@@ -68,10 +68,8 @@ public class SignInController {
 			entry = entries.get(0);
 		}
 		
-		entry.setNotes(signOut.getNotes());
-		entry.setBreakTime(signOut.getBreakTime());
 		
-		entryManager.stopRecording(entry);
+		entryManager.stopRecording(entry, signOut.getNotes(), signOut.getBreakTime());
 		
 		return "redirect:/auth/welcome";
 	}

@@ -44,7 +44,7 @@
 				<td>${entry.time}</td>
 				<td>${entry.breakTime}</td>
 				<td>${entry.project.name}</td>
-				<td>${entry.notes}</td>
+				<td>Clocking in notes:<br> ${entry.clockingInNotes} <br><br> Clocking out notes: <br>${entry.notes}</td>
 			</tr>
 
 		</c:forEach>

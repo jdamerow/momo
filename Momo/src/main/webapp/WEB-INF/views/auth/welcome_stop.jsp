@@ -6,12 +6,13 @@
 	<span class="byline">Get back your lost time</span>
 </div>
 
+<h2 class="subtitle">Clock out!</h2>
 <p>You clocked in ${entry.startDate}. Are you leaving and want to clock
 	out?</p>
 <form:form modelAttribute="signOutBackingBean" action="${pageContext.servletContext.contextPath}/auth/signOut">
 	<p>
-	Notes:<br>
-	<form:textarea path="notes" cols="40" rows="10" />
+	What did you do today?<br>
+	<form:textarea path="notes" cols="50" rows="15" />
 	</p>
 	<p>
 	Did you take a lunch break?

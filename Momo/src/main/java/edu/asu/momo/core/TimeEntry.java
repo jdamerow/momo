@@ -8,6 +8,7 @@ public class TimeEntry {
 	private Date endDate;
 	private String projectId;
 	private String notes;
+	private String clockingInNotes;
 	private String id;
 	private String userId;
 	private float breakTime;
@@ -53,6 +54,12 @@ public class TimeEntry {
 	}
 	public void setBreakTime(float breakTime) {
 		this.breakTime = breakTime;
+	}
+	public String getClockingInNotes() {
+		return clockingInNotes;
+	}
+	public void setClockingInNotes(String clockingInNotes) {
+		this.clockingInNotes = clockingInNotes;
 	}
 
 }
