@@ -32,7 +32,7 @@ public class EmailNotificationSender {
 	@Autowired
 	private JavaMailSender mailSender;
 
-    public void sendNotificationEmail(String emailaddress, String subject, String msgText) {
+    public void sendNotificationEmail(String emailaddress, String subject, String msgText, String msgTextHtml) {
     	/*
     	 * We need a valid from email address to be able to send an email.
     	 */
@@ -48,7 +48,7 @@ public class EmailNotificationSender {
             helper.setTo(new InternetAddress(emailaddress));
             helper.setFrom(new InternetAddress(from));
             helper.setSubject(subject);
-            helper.setText(msgText);
+            helper.setText(msgText, msgTextHtml);
             mailSender.send(message);
             logger.debug("Send email to " + emailaddress + " with subject \"" + subject + "\"");
         } catch (MessagingException ex) {
