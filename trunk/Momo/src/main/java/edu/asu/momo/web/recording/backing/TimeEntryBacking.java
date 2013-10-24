@@ -20,6 +20,7 @@ public class TimeEntryBacking {
 	private String timeInHM;
 	private ProjectBackingBean project;
 	private String notes;
+	private String clockingInNotes;
 	
 	private String breakTime;
 	
@@ -100,6 +101,12 @@ public class TimeEntryBacking {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getClockingInNotes() {
+		return clockingInNotes;
+	}
+	public void setClockingInNotes(String clockingInNotes) {
+		this.clockingInNotes = clockingInNotes;
 	}
 	
 	

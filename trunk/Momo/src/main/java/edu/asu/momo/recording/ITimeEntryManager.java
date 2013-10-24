@@ -10,7 +10,7 @@ public interface ITimeEntryManager {
 	public abstract TimeEntry startRecording(String user, String projectId,
 			String notes);
 
-	public abstract TimeEntry stopRecording(TimeEntry entry);
+	public abstract TimeEntry stopRecording(TimeEntry entry, String notes, float breakTime);
 
 	public abstract List<TimeEntry> getOpenTimeEntries(final String user);
 

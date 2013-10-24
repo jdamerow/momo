@@ -25,7 +25,7 @@ public class TimeEntryManager implements ITimeEntryManager {
 		TimeEntry entry = new TimeEntry();
 		entry.setUserId(user);
 		entry.setStartDate(new Date());
-		entry.setNotes(notes);
+		entry.setClockingInNotes(notes);
 		entry.setProjectId(projectId);
 		entry.setId(UUID.randomUUID().toString());
 		
@@ -34,8 +34,10 @@ public class TimeEntryManager implements ITimeEntryManager {
 	}
 	
 	@Override
-	public TimeEntry stopRecording(TimeEntry entry) {
+	public TimeEntry stopRecording(TimeEntry entry, String notes, float breakTime) {
 		entry.setEndDate(new Date());
+		entry.setNotes(notes);
+		entry.setBreakTime(breakTime);
 		dbManager.updateTimeEntry(entry);
 		return entry;
 	}

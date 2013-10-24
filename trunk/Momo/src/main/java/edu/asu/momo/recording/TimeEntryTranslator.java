@@ -69,6 +69,7 @@ public class TimeEntryTranslator {
 		 * set notes
 		 */
 		backingEntry.setNotes(entry.getNotes());
+		backingEntry.setClockingInNotes(entry.getClockingInNotes());
 		
 		/*
 		 * Set start time as long
