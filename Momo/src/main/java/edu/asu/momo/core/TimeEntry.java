@@ -2,6 +2,10 @@ package edu.asu.momo.core;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class TimeEntry {
 
 	private Date startDate;
@@ -9,6 +13,8 @@ public class TimeEntry {
 	private String projectId;
 	private String notes;
 	private String clockingInNotes;
+	
+	@Id
 	private String id;
 	private String userId;
 	private float breakTime;

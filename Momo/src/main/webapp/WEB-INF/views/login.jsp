@@ -20,5 +20,6 @@
 		<input name="submit" type="submit" value="Login" class="button" />
 	</p>
 
+	<form:errors path="" cssStyle="color: #ff0000;"/>
 
 </form>

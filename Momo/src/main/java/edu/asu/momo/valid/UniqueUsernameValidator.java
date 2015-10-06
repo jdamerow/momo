@@ -6,14 +6,14 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.User;
 
 @Component
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Override
 	public void initialize(UniqueUsername arg0) {

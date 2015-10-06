@@ -3,7 +3,7 @@ package edu.asu.momo.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.user.backing.UserBackingBean;
@@ -17,7 +17,7 @@ import edu.asu.momo.web.user.backing.UserBackingBean;
 public class UserBackingBeanConverter implements Converter<String, UserBackingBean> {
 
 	@Autowired
-	private IUserManager manager;
+	private IUserDBManager manager;
 	
 	@Autowired
 	private UserTranslator translater;

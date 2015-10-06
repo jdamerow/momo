@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.TimeChangeRequest;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.request.backing.TimeChangeRequestCalendarBean;
@@ -13,7 +13,7 @@ import edu.asu.momo.web.request.backing.TimeChangeRequestCalendarBean;
 public class TimeRequestCalendarTranslator {
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private UserTranslator userTranslator;

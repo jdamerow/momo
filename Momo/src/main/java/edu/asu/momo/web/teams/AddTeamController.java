@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.asu.momo.core.Team;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.web.teams.backing.TeamBackingBean;
@@ -21,7 +21,7 @@ import edu.asu.momo.web.teams.backing.TeamBackingBean;
 public class AddTeamController {
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private ITeamsManager teamsManager;

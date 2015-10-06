@@ -21,7 +21,7 @@ public class UserFactory implements IUserFactory {
 		user.setUsername(username);
 		user.setName(name);
 		user.setEmail(email);
-		user.setPassword(encrypt(password));
+		user.setPassword(password);
 		
 		user.setAuthorities(new ArrayList<MomoGrantedAuthority>());
 		for (Role role : roles) {

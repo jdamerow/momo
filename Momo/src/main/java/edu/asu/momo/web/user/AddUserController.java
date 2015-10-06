@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.asu.momo.db.IRoleManager;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.IUserFactory;
 import edu.asu.momo.user.User;
 import edu.asu.momo.web.user.backing.UserBackingBean;
@@ -20,7 +20,7 @@ import edu.asu.momo.web.user.backing.UserBackingBean;
 public class AddUserController {
 
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired 
 	private IUserFactory userFactory;

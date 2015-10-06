@@ -2,11 +2,20 @@ package edu.asu.momo.core;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Project {
 
+	@Id
 	private String id;
 	private String name;
 	private String description;
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<String> members;
 	private String teamId;
 	

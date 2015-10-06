@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.Team;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 import edu.asu.momo.web.teams.backing.TeamBackingBean;
@@ -23,7 +23,7 @@ import edu.asu.momo.web.user.backing.UserBackingBean;
 public class TeamTranslator {
 
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private UserTranslator userTranslator;

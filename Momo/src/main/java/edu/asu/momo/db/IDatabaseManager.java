@@ -1,6 +1,7 @@
 package edu.asu.momo.db;
 
-import com.db4o.ObjectContainer;
+import javax.persistence.EntityManager;
+
 
 /**
  * Interface to be implemented by Db4o database connection manager.
@@ -10,10 +11,13 @@ import com.db4o.ObjectContainer;
  */
 public interface IDatabaseManager {
 
-	public abstract ObjectContainer getClient();
+	public void update(Object object);
 
-	public abstract boolean isEncrypt();
+	public abstract void store(Object object);
 
-	public abstract void setEncrypt(boolean encrypt);
+	public abstract EntityManager getManager();
 
+	public abstract boolean delete(String id, Class<?> clazz);
+
+	public abstract Object get(String id, Class<?> clazz);
 }

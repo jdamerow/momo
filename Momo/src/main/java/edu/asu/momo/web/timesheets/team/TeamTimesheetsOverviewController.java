@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.core.TimeEntry;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.recording.ITimeEntryManager;
 import edu.asu.momo.recording.ITimeEntryUtility;
 import edu.asu.momo.recording.TimeEntryTranslator;
@@ -52,7 +52,7 @@ public class TeamTimesheetsOverviewController {
 	private TimeEntryTranslator timeTranslator;
 
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 
 	@Autowired
 	private UserTranslator userTranslator;

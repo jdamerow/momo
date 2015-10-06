@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.core.TimeRequest;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.requests.IStatus;
 import edu.asu.momo.requests.ITimeRequestManager;
 import edu.asu.momo.teams.ITeamsManager;
@@ -28,7 +28,7 @@ public class TimeChangeOverviewController {
 	private ITeamsManager teamManager;
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private ITimeRequestManager requestManager;

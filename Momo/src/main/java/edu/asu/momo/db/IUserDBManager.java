@@ -9,7 +9,7 @@ import edu.asu.momo.user.User;
  * @author Julia Damerow
  *
  */
-public interface IUserManager {
+public interface IUserDBManager {
 
 	/**
 	 * Save given user in database.
@@ -18,6 +18,8 @@ public interface IUserManager {
 	 */
 	public abstract boolean saveUser(User user);
 
+	public boolean updateUser(User user);
+	
 	/**
 	 * Get user by username.
 	 * @param userId

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.core.Team;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.teams.ITeamsManager;
 import edu.asu.momo.teams.TeamTranslator;
 import edu.asu.momo.user.User;
@@ -19,7 +19,7 @@ import edu.asu.momo.web.user.backing.UserBackingBean;
 public class ProjectTranslator {
 
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private UserTranslator userTranslator;

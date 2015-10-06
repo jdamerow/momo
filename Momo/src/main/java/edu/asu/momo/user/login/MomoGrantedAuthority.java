@@ -1,5 +1,7 @@
 package edu.asu.momo.user.login;
 
+import javax.persistence.Entity;
+
 import org.springframework.security.core.GrantedAuthority;
 
 public class MomoGrantedAuthority implements GrantedAuthority {

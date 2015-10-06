@@ -2,6 +2,8 @@ package edu.asu.momo.core;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 /**
  * This class encapsulates a time change request that needs approval
  * from a team manager.
@@ -9,6 +11,7 @@ import java.util.Date;
  * @author Julia Damerow
  *
  */
+@Entity
 public class TimeChangeRequest extends TimeRequest {
 
 	private Date oldStartDate;

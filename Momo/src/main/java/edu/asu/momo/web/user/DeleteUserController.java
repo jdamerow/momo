@@ -8,7 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.User;
 import edu.asu.momo.user.UserTranslator;
 
@@ -16,7 +16,7 @@ import edu.asu.momo.user.UserTranslator;
 public class DeleteUserController {
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private UserTranslator userTranslator;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.user.IUserFactory;
 import edu.asu.momo.user.User;
 import edu.asu.momo.web.profile.backing.PasswordBackingBean;
@@ -24,7 +24,7 @@ public class PasswordChangeController {
 	private IUserFactory userFactory;
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 
 	@RequestMapping(value = "auth/profile/changePassword")
 	public String preparePasswordChange(Principal principal, ModelMap map) {

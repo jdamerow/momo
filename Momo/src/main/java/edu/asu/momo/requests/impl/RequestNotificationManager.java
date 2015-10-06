@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import edu.asu.momo.core.Team;
 import edu.asu.momo.core.TimeChangeRequest;
 import edu.asu.momo.core.TimeRequest;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.notifications.EmailNotificationSender;
 import edu.asu.momo.requests.IRequestNotificationManager;
 import edu.asu.momo.teams.ITeamsManager;
@@ -35,7 +35,7 @@ public class RequestNotificationManager implements IRequestNotificationManager {
 	private ITeamsManager teamsManager;
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private Environment env;

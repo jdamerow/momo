@@ -7,14 +7,12 @@
 	<h2>Projects</h2>
 	<span class="byline">These are the projects you work on.</span>
 </div>
+<a class="smallLink" href="${pageContext.servletContext.contextPath}/auth/projects/addProject">+ Add new project</a>
 
 
 <c:forEach items="${projectMap}" var="project">
 
 <h3>${project.key.name}</h3>
-<c:if test="${project.key.isTeamManager}">
-<a class="smallLink" href="${pageContext.servletContext.contextPath}/auth/projects/addProject">+ Add new project</a>
-</c:if>
 
 <ul class="boppel">
 <c:if test="${not empty project.value}">

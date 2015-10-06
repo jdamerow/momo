@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import edu.asu.momo.core.Project;
 import edu.asu.momo.core.TimeEntry;
-import edu.asu.momo.db.IUserManager;
+import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.projects.IProjectManager;
 import edu.asu.momo.projects.ProjectTranslator;
 import edu.asu.momo.user.User;
@@ -27,7 +27,7 @@ public class TimeEntryTranslator {
 	private IProjectManager projectManager;
 	
 	@Autowired
-	private IUserManager userManager;
+	private IUserDBManager userManager;
 	
 	@Autowired
 	private UserTranslator userTranslator;

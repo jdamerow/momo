@@ -1,10 +1,25 @@
 package edu.asu.momo.core;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Role {
 
+	@Id @GeneratedValue
+	private long internalId;
+	
 	private String id;
 	private String name;
 	private String description;
+	
+	public Role() { }
+	
+	public Role(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 	
 	public String getId() {
 		return id;
