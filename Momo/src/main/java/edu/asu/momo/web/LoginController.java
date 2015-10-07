@@ -33,9 +33,12 @@ public class LoginController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(ModelMap model) {
-
 		return "login";
-
+	}
+	
+	@RequestMapping(value = "/expired", method = RequestMethod.GET)
+	public String expired(ModelMap model) {
+		return "expired";
 	}
 
 }

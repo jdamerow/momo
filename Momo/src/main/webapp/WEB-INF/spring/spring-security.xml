@@ -14,19 +14,24 @@
 		<intercept-url pattern="/logout*" access="permitAll" />
 
 		<intercept-url pattern="/resources/**" access="permitAll" />
-		
+
 		<intercept-url pattern="/auth/team/*" access="hasRole('ROLE_MANAGER')" />
 		<intercept-url pattern="/auth/team/**" access="hasRole('ROLE_MANAGER')" />
-		
+
 		<intercept-url pattern="/auth/user/*" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/auth/user/**" access="hasRole('ROLE_ADMIN')" />
 
 		<intercept-url pattern="/auth/**" access="isAuthenticated()" />
-		
+
 		<form-login login-page="/login" default-target-url="/auth/welcome"
 			authentication-failure-url="/loginfailed" />
 		<logout logout-success-url="/logout" invalidate-session="true" />
+		
+		<session-management invalid-session-url="/expired">
+		</session-management>
 	</http>
+
+	
 
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
@@ -41,8 +46,7 @@
 		erase-credentials="false">
 		<authentication-provider>
 			<user-service>
-				<user name="admin" password="admin"
-					authorities="ROLE_ADMIN" />
+				<user name="admin" password="admin" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 		<authentication-provider ref="authProvider"></authentication-provider>

@@ -43,6 +43,13 @@
 		<put-attribute name="topmenu" value="" />
 	</definition>
 	
+	<definition name="expired" extends="base.definition.empty">
+		<put-attribute name="title" value="Momo - Login" />
+		<put-attribute name="content" value="/WEB-INF/views/expired.jsp" />
+		<put-attribute name="navigation" value="" />
+		<put-attribute name="topmenu" value="" />
+	</definition>
+	
 	<!-- Logged in pages -->
 	<definition name="auth/welcome" extends="base.definition.submenu">
 		<put-attribute name="title" value="Momo - Login" />
