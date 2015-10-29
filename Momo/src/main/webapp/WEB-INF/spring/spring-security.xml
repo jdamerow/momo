@@ -25,7 +25,7 @@
 
 		<form-login login-page="/login" default-target-url="/auth/welcome"
 			authentication-failure-url="/loginfailed" />
-		<logout logout-success-url="/logout" invalidate-session="true" />
+		<logout logout-success-url="/logout" invalidate-session="false" delete-cookies="JSESSIONID" />
 		
 		<session-management invalid-session-url="/expired">
 		</session-management>

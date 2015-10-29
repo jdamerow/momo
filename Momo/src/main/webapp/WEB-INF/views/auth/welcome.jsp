@@ -6,6 +6,15 @@
 	<span class="byline">Get back your lost time</span>
 </div>
 
+<c:if test="${not empty success_message}">
+<div class="info message">
+     <h4>Success!</h4>
+     <p>${success_message}</p>
+</div>
+</c:if>
+
+<p>
+
 <h2 class="subtitle">Clock in!</h2>
 
 <p>Welcome back! Start your workday by clocking in!</p>
