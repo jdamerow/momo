@@ -70,7 +70,16 @@ public class ObjectDbUserDBManager implements IUserDBManager {
 	@Override
 	@Transactional
 	public boolean deleteUser(String username) {
-		return dbmanager.delete(username, PersistantUser.class);
+		TypedQuery<PersistantUser> query =
+			      dbmanager.getManager().createQuery("SELECT u FROM PersistantUser u WHERE u.username = :userId", PersistantUser.class);
+		query.setParameter("userId", username);
+		try {
+			PersistantUser persUser = query.getSingleResult();
+			dbmanager.delete(persUser.getId(), PersistantUser.class);
+			return true;
+		} catch (NoResultException ex) {
+			return false;
+		}
 	}
 
 	@Override

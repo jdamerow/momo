@@ -34,7 +34,7 @@ public class ObjectDbDatabaseManager implements IDatabaseManager {
 	
 	@Override
 	@Transactional
-	public boolean delete(String id, Class<?> clazz) {
+	public boolean delete(Object id, Class<?> clazz) {
 		Object obj = manager.find(clazz, id);
 		manager.remove(obj);
 		return true;

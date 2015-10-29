@@ -26,7 +26,7 @@ public class TimeRequestsManager implements ITimeRequestManager {
 	
 	@Override
 	public boolean updateTimeRequest(TimeRequest request) {
-		return dbManager.storeTimeRequest(request);
+		return dbManager.updateTimeRequest(request);
 	}
 	
 	@Override

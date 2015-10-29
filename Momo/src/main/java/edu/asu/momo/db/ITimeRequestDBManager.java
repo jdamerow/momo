@@ -14,4 +14,6 @@ public interface ITimeRequestDBManager {
 
 	public abstract List<TimeRequest> getAllTimeRequests(final String username);
 
+	public abstract boolean updateTimeRequest(TimeRequest request);
+
 }

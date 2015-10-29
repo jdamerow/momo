@@ -63,5 +63,12 @@ public class PersistantUser implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 
 }

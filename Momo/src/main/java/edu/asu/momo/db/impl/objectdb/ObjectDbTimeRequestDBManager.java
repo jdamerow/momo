@@ -26,6 +26,13 @@ public class ObjectDbTimeRequestDBManager
 		dbmanager.store(request);
 		return true;
 	}
+	
+	@Override
+	@Transactional
+	public boolean updateTimeRequest(TimeRequest request) {
+		dbmanager.update(request);
+		return true;
+	}
 
 	@Override
 	@Transactional

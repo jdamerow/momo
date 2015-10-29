@@ -17,7 +17,7 @@ public interface IDatabaseManager {
 
 	public abstract EntityManager getManager();
 
-	public abstract boolean delete(String id, Class<?> clazz);
+	public abstract boolean delete(Object id, Class<?> clazz);
 
 	public abstract Object get(String id, Class<?> clazz);
 }
