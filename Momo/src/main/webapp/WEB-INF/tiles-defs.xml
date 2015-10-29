@@ -26,6 +26,11 @@
 		<put-attribute name="content" value="" />
 		<put-attribute name="header" value="" />
 	</definition>
+	<definition name="base.definition.none" template="/WEB-INF/views/layouts/skeleton_none.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="header" value="" />
+	</definition>
 
 	<!-- Error -->
 	<definition name="auth/error" extends="base.definition.nomenu">
@@ -60,6 +65,7 @@
 	<definition name="auth/welcomeStop" extends="base.definition.submenu">
 		<put-attribute name="title" value="Momo - Login" />
 		<put-attribute name="content" value="/WEB-INF/views/auth/welcome_stop.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/auth/clock_header.jsp" />
 		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
 		<put-attribute name="submenu" value="/WEB-INF/views/auth/subnavs/nav_welcome.jsp" />
 	</definition>

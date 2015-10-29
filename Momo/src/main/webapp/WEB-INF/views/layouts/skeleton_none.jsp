@@ -33,12 +33,6 @@ Released   : 20130920
 <link
 	href="${pageContext.servletContext.contextPath}/resources/js/css/jquery.dataTables_themeroller.css"
 	rel="stylesheet" type="text/css" media="all" />
-<link
-	href="${pageContext.servletContext.contextPath}/resources/js/timepicker/jquery.ui.timepicker.css"
-	rel="stylesheet" type="text/css" media="all" />
-<link
-	href="${pageContext.servletContext.contextPath}/resources/js/countup/countup/jquery.countup.css"
-	rel="stylesheet" type="text/css" media="all" />
 
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -49,47 +43,12 @@ Released   : 20130920
 <!-- <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.js"></script>-->
 <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.dataTables.js"></script>
 <script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery.easyListSplitter.js"></script>
-<script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/timepicker/jquery.ui.timepicker.js"></script>
-<script type="text/javascript" language="javascript" src="${pageContext.servletContext.contextPath}/resources/js/countup/countup/jquery.countup.js"></script>
 
 <tiles:insertAttribute name="header" />
 </head>
 <body>
-<tiles:importAttribute name="currentPage" scope="request" />
-	<div id="header-wrapper">
-		<div id="header" class="container">
-			<div id="logo">
-				<h1>
-					<a href="#">Momo</a>
-				</h1>
-				<h2>Timesheet Management Tool</h2>
-			</div>
-			<div id="menu">
-				<tiles:insertAttribute name="topmenu" />
-			</div>
-		</div>
-	</div>
-	<div id="featured">&nbsp;</div>
-	<div id="wrapper">
-		<div id="page" class="container">
-			<div id="content">
-				<tiles:insertAttribute name="content" />
-			</div>
-			<div id="sidebar">
-				<div id="stwo-col">
-					<div class="sbox1">
-						<tiles:insertAttribute name="submenu" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="copyright" class="container">
-		<p>
-			Copyright (c) 2013 <a href="http://devo-evo.lab.asu.edu/diging/">Digital Innovation Group</a>. All rights reserved. | Design by <a
-				href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a> | Icons by <a href="http://iconza.com/">Iconza</a>.
-		</p>
-	</div>
+	
+<tiles:insertAttribute name="content" />
 
 </body>
 </html>

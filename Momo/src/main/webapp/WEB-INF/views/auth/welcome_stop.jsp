@@ -7,8 +7,10 @@
 </div>
 
 <h2 class="subtitle">Clock out!</h2>
+
 <p>You clocked in ${entry.startDate}. Are you leaving and want to clock
 	out?</p>
+<div id="countdown"></div>
 <form:form modelAttribute="signOutBackingBean" action="${pageContext.servletContext.contextPath}/auth/signOut">
 	<p>
 	What did you do today?<br>
@@ -20,3 +22,11 @@
 	</p>
 	<input type="submit" value="Clock out" name="submit" class="button" />
 </form:form>
+
+<script type="text/javascript">
+$(function(){
+	
+	$('#countdown').countup();
+	
+});
+</script>
