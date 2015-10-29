@@ -26,7 +26,7 @@
 <script type="text/javascript">
 $(function(){
 	
-	$('#countdown').countup();
+	$('#countdown').countup({start: new Date("${entry.startDate}")});
 	
 });
 </script>
