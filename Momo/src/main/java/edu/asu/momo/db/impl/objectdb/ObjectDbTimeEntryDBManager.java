@@ -23,8 +23,8 @@ public class ObjectDbTimeEntryDBManager implements ITimeEntryDBManager {
 	@Transactional
 	public List<TimeEntry> getOpenTimeEntries(String user) {
 		TypedQuery<TimeEntry> query =
-			      dbmanager.getManager().createQuery("SELECT t FROM TimeEntry t WHERE t.endDate IS NULL", TimeEntry.class);
-		List<TimeEntry> results = query.getResultList();
+			      dbmanager.getManager().createQuery("SELECT t FROM TimeEntry t WHERE t.endDate IS NULL AND t.userId == :user", TimeEntry.class);
+		List<TimeEntry> results = query.setParameter("user", user).getResultList();
 		return results;
 	}
 

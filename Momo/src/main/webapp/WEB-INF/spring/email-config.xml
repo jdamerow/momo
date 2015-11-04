@@ -2,10 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<!--     
+    
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value=""/>
-        <property name="port" value=""/>
+        <property name="host" value="emailhost"/>
+        <property name="port" value="43"/>
         <property name="username" value=""/>
         <property name="password" value=""/>
         <property name="javaMailProperties">
@@ -16,5 +16,5 @@
             </props>
         </property>
     </bean>
- -->
+
 </beans>
