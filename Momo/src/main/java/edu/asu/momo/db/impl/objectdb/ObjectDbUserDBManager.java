@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import edu.asu.momo.core.Role;
 import edu.asu.momo.db.IDatabaseManager;
 import edu.asu.momo.db.IUserDBManager;
 import edu.asu.momo.db.impl.objectdb.persist.PersistantUser;
+import edu.asu.momo.notifications.EmailNotificationSender;
 import edu.asu.momo.user.IUserFactory;
 import edu.asu.momo.user.User;
 
@@ -26,6 +29,10 @@ public class ObjectDbUserDBManager implements IUserDBManager {
 
 	@Autowired
 	private IUserFactory userFactory;
+	
+	private static final Logger logger = LoggerFactory
+			.getLogger(ObjectDbUserDBManager.class);
+	
 	
 	@Transactional
 	public boolean saveUser(User user) {
@@ -47,12 +54,12 @@ public class ObjectDbUserDBManager implements IUserDBManager {
 		TypedQuery<PersistantUser> query =
 			      dbmanager.getManager().createQuery("SELECT u FROM PersistantUser u WHERE u.username = :userId", PersistantUser.class);
 		query.setParameter("userId", userId);
-		try {
-			PersistantUser persUser = query.getSingleResult();
-			return userFactory.createUser(persUser.getUsername(), persUser.getName(), persUser.getEmail(), persUser.getPassword(), persUser.getRoles());
-		} catch (NoResultException ex) {
+		List<PersistantUser> persUsers = query.getResultList();
+		if (persUsers.isEmpty())
 			return null;
-		}
+		
+		PersistantUser persUser = persUsers.get(0);
+		return userFactory.createUser(persUser.getUsername(), persUser.getName(), persUser.getEmail(), persUser.getPassword(), persUser.getRoles());
 	}
 
 	@Override
@@ -73,13 +80,13 @@ public class ObjectDbUserDBManager implements IUserDBManager {
 		TypedQuery<PersistantUser> query =
 			      dbmanager.getManager().createQuery("SELECT u FROM PersistantUser u WHERE u.username = :userId", PersistantUser.class);
 		query.setParameter("userId", username);
-		try {
-			PersistantUser persUser = query.getSingleResult();
-			dbmanager.delete(persUser.getId(), PersistantUser.class);
-			return true;
-		} catch (NoResultException ex) {
+		List<PersistantUser> persUsers = query.getResultList();
+		if (persUsers.isEmpty())
 			return false;
-		}
+		
+		PersistantUser persUser = persUsers.get(0);
+		dbmanager.delete(persUser.getId(), PersistantUser.class);
+		return true;
 	}
 
 	@Override
@@ -89,6 +96,13 @@ public class ObjectDbUserDBManager implements IUserDBManager {
 			      dbmanager.getManager().createQuery("SELECT u FROM PersistantUser u WHERE u.username = :userId", PersistantUser.class);
 		query.setParameter("userId", user.getUsername());
 		PersistantUser persUser = query.getSingleResult();
+		persUser.setEmail(user.getEmail());
+		persUser.setName(user.getName());
+		persUser.setPassword(user.getPassword());
+		persUser.setRoles(new ArrayList<Role>());
+		for (GrantedAuthority auth : user.getAuthorities()) {
+			persUser.getRoles().add(new Role(auth.getAuthority(), auth.getAuthority()));
+		}
 		dbmanager.update(persUser);
 		return true;
 	}

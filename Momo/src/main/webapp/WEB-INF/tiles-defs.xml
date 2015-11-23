@@ -249,6 +249,14 @@
 		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
 		<put-attribute name="submenu" value="" />
 	</definition>
+	<definition name="auth/user/changePassword" extends="base.definition.submenu">
+		<put-attribute name="title" value="Momo - Change Password" />
+		<put-attribute name="currentPage" value="home" />
+		<put-attribute name="content" value="/WEB-INF/views/auth/user/changePassword.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/nav/top_loggedin.jsp" />
+		<put-attribute name="submenu" value="" />
+		<put-attribute name="header" value="" />
+	</definition>
 	
 </tiles-definitions>
 

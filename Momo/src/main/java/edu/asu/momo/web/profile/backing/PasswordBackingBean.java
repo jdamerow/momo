@@ -12,6 +12,8 @@ public class PasswordBackingBean {
 	@NotEmpty
 	private String control;
 	
+	private String userid;
+	
 	public String getPassword() {
 		return password;
 	}
@@ -23,6 +25,12 @@ public class PasswordBackingBean {
 	}
 	public void setControl(String control) {
 		this.control = control;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	
 }
